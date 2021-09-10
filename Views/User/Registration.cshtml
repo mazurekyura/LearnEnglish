@@ -1,0 +1,34 @@
+﻿@model LearnEnglish.Models.User.RegistrationViewModel
+
+@section Head{
+    <script src="~/js/registration.js"></script>
+    <link rel="stylesheet" href="~/css/login.css">
+}
+
+<form action="/User/Registration" method="post">
+
+    <label class="login-input">
+        Login
+        <div>
+            @Html.TextBoxFor(x => x.Login, new { @class = "icon-ok-cancel" })
+            <img class="icon-registration ok" src="~/image/ok.png" />
+            <img class="icon-registration cancel" src="~/image/cancel.png" />
+            @Html.ValidationMessageFor(x => x.Login)
+        </div>
+    </label>
+    <label class="login-input">
+        Password
+        <div>
+            @Html.TextBoxFor(x => x.Password)
+            @Html.ValidationMessageFor(x => x.Password)
+        </div>
+    </label>
+    <label class="login-input">
+        Confirm password
+        <div>
+            @Html.TextBoxFor(x => x.ConfirmPassword)
+            @Html.ValidationMessageFor(x => x.ConfirmPassword)
+        </div>
+    </label>
+    <input type="submit" value="Регистрация" />
+</form>

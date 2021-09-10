@@ -1,0 +1,15 @@
+﻿@model LearnEnglish.Models.User.UserLessonViewModel
+
+<div class="cover-user">
+    <div class=" user-name">
+        @Model.Login ваши выбранные уроки
+    </div>
+    <div>
+        @foreach (var course in Model.SelectedLessons)
+        {
+            <p>
+                @course.LessonName
+            </p>
+        }
+    </div>
+</div>

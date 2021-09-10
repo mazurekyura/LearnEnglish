@@ -1,0 +1,23 @@
+﻿@model List<LearnEnglish.Models.Lesson.LessonSelectedViewModel>
+
+@section Head{
+    <link rel="stylesheet" href="~/css/course.css" />
+}
+
+<form action="/User/SelectedLessons" method="post">
+    <div class="select-favorite-user">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <div class="name">
+                @Html.HiddenFor(m => Model[i].Id)
+                @Html.DisplayFor(x => Model[i].LessonName)
+            </div>
+            <div class=" select">
+                @Html.CheckBoxFor(x => Model[i].IsSelected)
+            </div>
+        }
+    </div>
+    <div>
+        <input type="submit" name="Select" />
+    </div>
+</form>

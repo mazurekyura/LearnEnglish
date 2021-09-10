@@ -1,0 +1,14 @@
+﻿@model LearnEnglish.Models.Lesson.LessonAddViewModel
+
+@section Head {
+    <link rel="stylesheet" href="~/css/course.css" />
+}
+
+<form class="form" action="/Lesson/LessonAdd" method="post">
+    <div>
+        Enter lesson @Html.TextBoxFor(x => x.Name)
+    </div>
+    <div class="form">
+        <input type="submit" name="Create" />
+    </div>
+</form>

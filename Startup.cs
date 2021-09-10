@@ -1,7 +1,9 @@
 using AutoMapper;
 using AutoMapper.Configuration;
 using LearnEnglish.EfStuff;
+using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
+using LearnEnglish.Models.User;
 using LearnEnglish.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +28,8 @@ namespace LearnEnglish
             Configuration = configuration;
         }
 
+        public const string AuthName = "LearnEnglishCoockie";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -36,13 +40,13 @@ namespace LearnEnglish
             services.AddDbContext<LearnEnglishDbContext>
                 (options => options.UseSqlServer(connectionString));
 
-            //services.AddAuthentication(AuthName)
-            //    .AddCookie(AuthName, config =>
-            //    {
-            //        config.LoginPath = "/User/Login";
-            //        config.AccessDeniedPath = "/User/Denied";
-            //        config.Cookie.Name = "Smile";
-            //    });
+            services.AddAuthentication(AuthName)
+                .AddCookie(AuthName, config =>
+                {
+                    config.LoginPath = "/User/Login";
+                    config.AccessDeniedPath = "/User/Denied";
+                    config.Cookie.Name = "Smile";
+                });
 
             RegisterRepositories(services);
 
@@ -83,7 +87,7 @@ namespace LearnEnglish
 
             //provider.CreateMap<CourseAddViewModel, Course>();
 
-            //provider.CreateMap<RegistrationViewModel, User>();
+            provider.CreateMap<RegistrationViewModel, User>();
 
             //provider.CreateMap<UserProfileViewModel, UserProfile>();
 

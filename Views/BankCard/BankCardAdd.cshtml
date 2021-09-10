@@ -1,0 +1,26 @@
+﻿@using LearnEnglish.Localize
+
+@model LearnEnglish.Models.BankCard.BankCardAddViewModel
+
+<form action="/BankCard/BankCardAdd" method="post">
+    <div class="field-box">
+        <div class="filed-name">
+            @BankCard.Number_Of_Card
+        </div>
+        <div class="field-value">
+            @Html.TextBoxFor(x => x.CardNumber)
+            @Html.ValidationMessageFor(x => x.CardNumber)
+        </div>
+    </div>
+    <div class="field-box">
+        <div class="filed-name">
+            @BankCard.Validity_Month_Year
+        </div>
+        <div class="field-value">
+            @Html.TextBoxFor(x => x.ValidityMonth) / @Html.TextBoxFor(x => x.ValidityYear)
+            @Html.ValidationMessageFor(x => x.ValidityMonth)
+            @Html.ValidationMessageFor(x => x.ValidityYear)
+        </div>
+    </div>
+    <div> <input type="submit" value="@BankCard.Add_Сard" /> </div>
+</form>

@@ -1,0 +1,61 @@
+﻿@using LearnEnglish.Localize
+
+@model LearnEnglish.Models.BankCard.BankCardAllViewModel
+
+@section Head{
+    <link rel="stylesheet" href="~/css/bankcard.css">
+}
+
+<div>
+    <table border="1" align="center" cellspacing="0" cellpadding="10">
+        <caption align="center">@BankCard.Info_Bank_Card</caption>
+        <tr>
+            <th>@BankCard.Id_Card</th>
+            <th>@BankCard.Number_Of_Card</th>
+            <th>@BankCard.Validity_Month</th>
+            <th>@BankCard.Validity_Year</th>
+            <th></th>
+        </tr>
+        @foreach (var card in Model.BankCards)
+        {
+            <tr>
+                <th>@card.Id</th>
+                <th>@card.CardNumber</th>
+                <th>@card.ValidityMonth</th>
+                <th>@card.ValidityYear</th>
+                <th>
+                    <input class="button"
+                           type="button"
+                           value="@BankCard.Delete_Сard"
+                           onclick="location.href='/BankCard/BankCardDelete?id=@card.Id'" />
+                </th>
+            </tr>
+        }
+        <tr>
+            <th>
+                <a href="/BankCard/DownloadBankCard">@BankCard.Save_file_doc</a>
+            </th>
+            <th>
+                <a href="/BankCard/CreateBankCardsForTrain">@BankCard.Add_50_cards</a>
+            </th>
+        </tr>
+    </table>
+
+    <div align="center">
+        @for (int i = 1; i <= Model.AllPages; i++)
+        {
+            <a href="/BankCard/BankCardAll?page=@i">
+                @i
+            </a>
+        }
+    </div>
+
+    <div align="center">
+        @BankCard.Positions_from
+        @Model.FirstPositionOnPage
+        @BankCard.To
+        @(Model.LastPositionOnPage)
+        @BankCard.Out_of
+        @Model.TotalRecordCount
+    </div>
+</div>
