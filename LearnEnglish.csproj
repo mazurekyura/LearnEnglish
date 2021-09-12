@@ -17,4 +17,23 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Localize\BankCard.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BankCard.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Localize\BankCard.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BankCard.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\temp\" />
+  </ItemGroup>
+
 </Project>

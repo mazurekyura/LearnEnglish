@@ -3,7 +3,10 @@ using AutoMapper.Configuration;
 using LearnEnglish.EfStuff;
 using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
+using LearnEnglish.Models.BankCard;
+using LearnEnglish.Models.Lesson;
 using LearnEnglish.Models.User;
+using LearnEnglish.Models.UserProfile;
 using LearnEnglish.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -52,9 +55,9 @@ namespace LearnEnglish
 
             RegisterMapper(services);
 
-            //services.NiceRegister<UserService>();
+            services.RegisterAssistant<UserService>();
 
-            //services.NiceRegister<FileService>();
+            services.RegisterAssistant<FileService>();
 
             services.AddControllersWithViews();
 
@@ -81,15 +84,15 @@ namespace LearnEnglish
         {
             var provider = new MapperConfigurationExpression();
 
-            //provider.CreateMap<BankCard, BankCardGetViewModel>();
+            provider.CreateMap<BankCard, BankCardGetViewModel>();
 
-            //provider.CreateMap<BankCardAddViewModel, BankCard>();
+            provider.CreateMap<BankCardAddViewModel, BankCard>();
 
-            //provider.CreateMap<CourseAddViewModel, Course>();
+            provider.CreateMap<LessonAddViewModel, Lesson>();
 
             provider.CreateMap<RegistrationViewModel, User>();
 
-            //provider.CreateMap<UserProfileViewModel, UserProfile>();
+            provider.CreateMap<UserProfileViewModel, UserProfile>();
 
             var mapperConfiguration = new MapperConfiguration(provider);
             var mapper = new Mapper(mapperConfiguration);
@@ -116,6 +119,8 @@ namespace LearnEnglish
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<LocalizeMidlleware>();
 
             app.UseEndpoints(endpoints =>
             {

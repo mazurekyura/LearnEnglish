@@ -1,0 +1,15 @@
+﻿.icon-registration {
+    max-width: 20px;
+    max-height: 20px
+}
+
+.field-validation-error {
+    color: #ff0000;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.input-validation-error {
+    border: 1px solid #006699;
+    background-color: silver;
+}
