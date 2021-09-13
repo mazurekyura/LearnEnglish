@@ -43,13 +43,13 @@ namespace LearnEnglish.Controllers
             }
 
             [HttpGet]
-            public IActionResult CourseAdd()
+            public IActionResult LessonAdd()
             {
                 return View();
             }
 
             [HttpPost]
-            public IActionResult CourseAdd(LessonAddViewModel viewModel)
+            public IActionResult LessonAdd(LessonAddViewModel viewModel)
             {
                 var newCourse = _mapper.Map<Lesson>(viewModel);
                 _lessonRepository.Save(newCourse);
@@ -58,7 +58,7 @@ namespace LearnEnglish.Controllers
             }
 
             [HttpGet]
-            public IActionResult CourseSelect()
+            public IActionResult LessonSelect()
             {
                 var userCoursesId = _userService.GetCurrent().Lessons.Select(x => x.Id).ToList();
 

@@ -1,15 +1,53 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using LearnEnglish.Services
+@inject UserService userService
+
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - LearnEnglish</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="~/css/site.css?v=1">
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/js/localize.js"></script>
+
+    @RenderSection("Head", false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header class="header">
+        <img src="~/image/logo.png" />
+        Learn English
+    </header>
+    <div class="center-block">
+        <div class="menu">
+            <a href="/Home/Index">Home</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="/User/Logout">Logout</a>
+                <a asp-controller="User" asp-action="Logout">Logout2</a>
+                if (userService.IsAdmin())
+                {
+                    <a href="/Lesson/Add">LessonAdd</a>
+                }
+            }
+            else
+            {
+                <a href="/User/Login">Login</a>
+            }
+
+            @*<button class="card">@WebMazeMvc.Localize.BankCard.Bank_Card</button>
+                <div class="card-option hidden">
+                    <a href="/BankCard/BankCardAdd">@WebMazeMvc.Localize.BankCard.Add_Сard</a><br>
+                    <a href="/BankCard/BankCardRemove">@WebMazeMvc.Localize.BankCard.Remove_Сard</a><br>
+                    <a href="/BankCard/BankCardAll">@WebMazeMvc.Localize.BankCard.See_All</a><br>
+                </div>*@
+        </div>
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+    @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LearnEnglish</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -27,22 +65,22 @@
                     </ul>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        </nav>*@
+    <div class="footer">
+        Подвал
+        <select class="language">
+            <option value="ru-RU">Рус</option>
+            <option value="en-EN">Eng</option>
+            <option value="zz-ZZ">ZZ</option>
+        </select>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - LearnEnglish - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        @*<div class="contacts">
+                <div class="social-media">
+                    <img class="footer-icon facebook" src="/image/icon/facebook.png">
+                    <img class="footer-icon instagram" src="/image/icon/instagram.png">
+                    <img class="footer-icon instagram" src="/image/icon/telegram.png">
+                </div>
+            </div>*@
+    </div>
 </body>
 </html>

@@ -125,7 +125,7 @@
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BankCard_Ru" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bankcard.ru.resx;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\Localize\BankCard.Ru.resx;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Bank_Card" xml:space="preserve">
     <value>Bank card</value>

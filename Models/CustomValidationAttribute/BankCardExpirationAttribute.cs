@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LearnEnglish.Models.BankCard;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 

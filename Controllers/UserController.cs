@@ -2,6 +2,7 @@
 using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
 using LearnEnglish.Models;
+using LearnEnglish.Models.Lesson;
 using LearnEnglish.Models.User;
 using LearnEnglish.Services;
 using Microsoft.AspNetCore.Authentication;
@@ -19,7 +20,7 @@ namespace LearnEnglish.Controllers
     {
         private readonly IMapper _mapper;
         private readonly UserRepository _userRepository;
-        private readonly LessonRepository _courseRepository;
+        private readonly LessonRepository _lessonRepository;
         private readonly UserService _userService;
 
         public UserController(IMapper mapper, UserRepository userRepository,
@@ -28,7 +29,7 @@ namespace LearnEnglish.Controllers
             _mapper = mapper;
             _userRepository = userRepository;
             _userService = userService;
-            _courseRepository = lessonRepository;
+            _lessonRepository = lessonRepository;
         }
 
         [HttpGet]
@@ -110,17 +111,17 @@ namespace LearnEnglish.Controllers
         }
 
         [HttpPost]
-        public IActionResult SelectedCourses(List<LessonSelectedViewModel> selectedCorses)
+        public IActionResult SelectedCourses(List<LessonSelectedViewModel> selectedLessons)
         {
             var user = _userService.GetCurrent();
 
-            var selectedCorsesId = selectedCorses
+            var selectedLessonsId = selectedLessons
                 .Where(x => x.IsSelected)
                 .Select(x => x.Id)
                 .ToList();
 
             user.Lessons.RemoveRange(0, user.Lessons.Count);
-            user.Lessons = _courseRepository.FindCoursesById(selectedLessonsId);
+            user.Lessons = _lessonRepository.FindCoursesById(selectedLessonsId);
             _userRepository.Save(user);
 
             return RedirectToAction("SelectedCourses");
@@ -131,12 +132,12 @@ namespace LearnEnglish.Controllers
         {
             var user = _userService.GetCurrent();
 
-            var viewModel = new UserCourseViewModel
+            var viewModel = new UserLessonViewModel
             {
                 Login = user.Login,
-                SelectedCourses = user.Courses.Select(x => new CourseViewModel
+                SelectedLessons = user.Lessons.Select(x => new LessonViewModel
                 {
-                    CourseName = x.Name,
+                    LessonName = x.Name,
                     Id = x.Id
                 }).ToList()
             };

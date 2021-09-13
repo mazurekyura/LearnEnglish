@@ -13,9 +13,9 @@ namespace LearnEnglish.EfStuff.Repositories
         {
         }
 
-        public bool Exist(string courseName)
+        public bool Exist(string lessonName)
         {
-            return _dbSet.Any(x => x.Name == courseName);
+            return _dbSet.Any(x => x.Name == lessonName);
         }
 
         public List<Lesson> FindCoursesById(List<long> ids)
