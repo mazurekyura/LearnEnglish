@@ -1,71 +1,236 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿.header {
+    background: #33ff00;
+    font-size: 30px;
+    text-align: left;
+    height: 60px;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+    .header img {
+        max-width: 35px;
+        max-height: 35px;
+        align-content: center;
+    }
+
+.center-block {
+    display: flex;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.menu {
+    width: 170px;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.content {
+    flex: 1;
+    border: 1px red solid;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+img {
+    max-width: 50px;
+    max-height: 50px;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.buttons {
+    display: flex;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.button {
+    flex: 1;
+    text-align: center;
+    border: 1px red solid;
+    margin: 5px;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+
+.input-validation-error {
+    border: 1px red solid;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+.field-box {
+    display: flex;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+.filed-name {
+    width: 200px;
 }
+
+.field-value {
+    flex: 1;
+}
+
+.news {
+    padding-left: 20px;
+    border-left: 1px red solid;
+}
+
+.allgames {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.oneGame {
+    text-align: center;
+    border: 2px blue solid;
+    margin: 4px;
+    flex-direction: column;
+}
+
+.namegame {
+    font-size: 20px;
+}
+
+.logogame {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+}
+
+.oneGame img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.news {
+    padding-left: 20px;
+    border-left: 1px red solid;
+}
+
+.icon {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.linkgame {
+    font-size: 12px;
+}
+
+.icon-add-cat {
+    height: 15px;
+    width: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.menu-main {
+    list-style: none;   
+    text-align: center;
+    background: #dfd4d4;
+}
+
+.menu-main li {
+    display: inline-block;
+}
+
+        .menu-main li:after {
+            content: "|";
+            color: #606060;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .menu-main li:last-child:after {
+            content: none;
+        }
+
+    .menu-main a {
+        text-decoration: none;
+        font-family: 'Ubuntu Condensed', sans-serif;
+        letter-spacing: 2px;
+        position: relative;
+        padding-bottom: 20px;
+        margin: 0 34px 0 30px;
+        font-size: 17px;
+        text-transform: uppercase;
+        display: inline-block;
+        transition: color .2s;
+    }
+
+        .menu-main a, .menu-main a:visited {
+            color: #9d999d;
+        }
+
+            .menu-main a.current, .menu-main a:hover {
+                color: #feb386;
+            }
+
+            .menu-main a:before,
+            .menu-main a:after {
+                content: "";
+                position: absolute;
+                height: 4px;
+                top: auto;
+                right: 50%;
+                bottom: -5px;
+                left: 50%;
+                background: #feb386;
+                transition: .8s;
+            }
+
+            .menu-main a:hover:before, .menu-main .current:before {
+                left: 0;
+            }
+
+            .menu-main a:hover:after, .menu-main .current:after {
+                right: 0;
+            }
+
+/*@media (max-width: 550px) {
+    .menu-main {
+        padding-top: 0;
+    }
+
+        .menu-main li {
+            display: block;
+        }
+
+            .menu-main li:after {
+                content: none;
+            }
+
+        .menu-main a {
+            padding: 25px 0 20px;
+            margin: 0 30px;
+        }
+}*/
+
+﻿.footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    min-height: 50px;
+    background: #1f1f1f;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.contacts {
+    display: block;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.rights {
+    text-align: left;
+    display: block;
+    margin-left: 20px;
+    opacity: 0.8;
+    font-weight: 600;
+}
+
+.social-media {
+    display: block;
+    justify-content: space-around;
+}
+

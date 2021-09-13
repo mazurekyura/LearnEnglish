@@ -118,6 +118,10 @@ namespace LearnEnglish
 
             app.UseRouting();
 
+            //Who am I?
+            app.UseAuthentication();
+
+            //Waht can I see?
             app.UseAuthorization();
 
             app.UseMiddleware<LocalizeMidlleware>();

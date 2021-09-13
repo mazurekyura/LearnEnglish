@@ -60,7 +60,7 @@ namespace LearnEnglish.Controllers
 
             if (string.IsNullOrEmpty(viewModel.ReturnUrl))
             {
-                return RedirectToAction("/");
+                return RedirectToAction("Index", "Home");
             }
 
             return Redirect(viewModel.ReturnUrl);
@@ -111,7 +111,7 @@ namespace LearnEnglish.Controllers
         }
 
         [HttpPost]
-        public IActionResult SelectedCourses(List<LessonSelectedViewModel> selectedLessons)
+        public IActionResult SelectedLessons(List<LessonSelectedViewModel> selectedLessons)
         {
             var user = _userService.GetCurrent();
 
@@ -124,11 +124,11 @@ namespace LearnEnglish.Controllers
             user.Lessons = _lessonRepository.FindCoursesById(selectedLessonsId);
             _userRepository.Save(user);
 
-            return RedirectToAction("SelectedCourses");
+            return RedirectToAction("SelectedLessons");
         }
 
         [HttpGet]
-        public IActionResult SelectedCourses()
+        public IActionResult SelectedLessons()
         {
             var user = _userService.GetCurrent();
 

@@ -6,81 +6,80 @@
 <head>
     <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="~/css/site.css?v=1">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js"></script>
+    <script src="~/js/registration.js"></script>
     <script src="~/js/localize.js"></script>
 
     @RenderSection("Head", false)
 </head>
-<body>
-    <header class="header">
-        <img src="~/image/logo.png" />
-        Learn English
+<body>    
+    <header>
+        <ul class="menu-main">
+            <li><img src="~/image/logo.png" /></li>
+            <li><a href="">Learn English</a></li>
+            <li><a href="">Video</a></li>
+            <li><a href="">Audio</a></li>
+            <li><a href="">Text</a></li>
+        </ul>
     </header>
     <div class="center-block">
         <div class="menu">
-            <a href="/Home/Index">Home</a>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <a href="/User/Logout">Logout</a>
-                <a asp-controller="User" asp-action="Logout">Logout2</a>
-                if (userService.IsAdmin())
+            <ul>
+                @if (User.Identity.IsAuthenticated)
                 {
-                    <a href="/Lesson/Add">LessonAdd</a>
+                    <li><a href="/UserProfile/Profile">MyProfile</a></li>
+                    <li><a href="/Lesson/Select">LessonSelect</a></li>
+                    <li><a href="/User/SelectedLessons">SelectedLessons</a></li>
+                    <li><a href="/User/Logout">Exit</a></li>
+                    @if (userService.IsAdmin())
+                    {
+                        <li><a href="/Lesson/Add">LessonAdd</a></li>
+                    }
                 }
-            }
-            else
-            {
-                <a href="/User/Login">Login</a>
-            }
+                else
+                {
+                    <li><a href="/User/Registration">Registration</a></li>
+                    <li><a href="/User/Login">Login</a></li>
+                }
+                <li><a href="">Lessons</a></li>
+            </ul>
+                       
 
-            @*<button class="card">@WebMazeMvc.Localize.BankCard.Bank_Card</button>
-                <div class="card-option hidden">
-                    <a href="/BankCard/BankCardAdd">@WebMazeMvc.Localize.BankCard.Add_Сard</a><br>
-                    <a href="/BankCard/BankCardRemove">@WebMazeMvc.Localize.BankCard.Remove_Сard</a><br>
-                    <a href="/BankCard/BankCardAll">@WebMazeMvc.Localize.BankCard.See_All</a><br>
-                </div>*@
+            <button class="card">@LearnEnglish.Localize.BankCard.Bank_Card</button>
+            <div class="card-option hidden">
+                <a href="/BankCard/BankCardAdd">@LearnEnglish.Localize.BankCard.Add_Сard</a><br>
+                <a href="/BankCard/BankCardRemove">@LearnEnglish.Localize.BankCard.Remove_Сard</a><br>
+                <a href="/BankCard/BankCardAll">@LearnEnglish.Localize.BankCard.See_All</a><br>
+            </div>
         </div>
         <div class="content">
             @RenderBody()
         </div>
     </div>
-    @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LearnEnglish</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>*@
+    
     <div class="footer">
-        Подвал
-        <select class="language">
-            <option value="ru-RU">Рус</option>
-            <option value="en-EN">Eng</option>
-            <option value="zz-ZZ">ZZ</option>
-        </select>
+        <div class="rights">
+            © All rights reserved - 2021 - LearnEnglish - TMS2021
+        </div>        
+        
+        <div class="language">
+            <select>
+                <option value="ru-RU">Рус</option>
+                <option value="en-EN">Eng</option>
+                <option value="zz-ZZ">ZZ</option>
+            </select>
+        </div>              
 
-        @*<div class="contacts">
+        <div class="contacts">
                 <div class="social-media">
                     <img class="footer-icon facebook" src="/image/icon/facebook.png">
                     <img class="footer-icon instagram" src="/image/icon/instagram.png">
                     <img class="footer-icon instagram" src="/image/icon/telegram.png">
                 </div>
-            </div>*@
+        </div>
     </div>
 </body>
 </html>
