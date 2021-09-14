@@ -5,6 +5,7 @@ using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
 using LearnEnglish.Models.BankCard;
 using LearnEnglish.Models.Lesson;
+using LearnEnglish.Models.Test;
 using LearnEnglish.Models.User;
 using LearnEnglish.Models.UserProfile;
 using LearnEnglish.Services;
@@ -89,6 +90,8 @@ namespace LearnEnglish
             provider.CreateMap<BankCardAddViewModel, BankCard>();
 
             provider.CreateMap<LessonAddViewModel, Lesson>();
+
+            provider.CreateMap<TestAddViewModel, Test>();
 
             provider.CreateMap<RegistrationViewModel, User>();
 

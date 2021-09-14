@@ -1,0 +1,17 @@
+﻿@model LearnEnglish.Models.Test.TestAddViewModel
+
+
+<form class="form" action="/Test/Add" method="post">
+    <div>
+        Enter question @Html.TextBoxFor(x => x.Question)
+    </div>
+    <div>
+        Enter answer true @Html.TextBoxFor(x => x.AnswerTrue)
+    </div>
+    <div>
+        Enter answer false @Html.TextBoxFor(x => x.AnswerFasle)
+    </div>
+    <div>
+        <input type="submit" name="Create" />
+    </div>
+</form>

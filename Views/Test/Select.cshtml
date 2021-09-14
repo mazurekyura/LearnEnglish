@@ -1,0 +1,23 @@
+﻿@model List<LearnEnglish.Models.Test.TestSelectedViewModel>
+
+
+<form action="/Test/Answers" method="post">
+    <div class="select-favorite-user">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <div class="name">
+                @Html.HiddenFor(m => Model[i].Id)
+                @Html.DisplayFor(x => Model[i].Question)
+            </div>
+            <div class=" select">
+                @Html.RadioButton("", Model[i].AnswerTrue.ToString())
+                <span>@Model[i].AnswerTrue</span><br />
+                @Html.RadioButton("", Model[i].AnswerFalse.ToString())
+                <span>@Model[i].AnswerFalse</span><br />
+            </div>
+        }
+    </div>
+    <div>
+        <input type="submit" name="Select" />
+    </div>
+</form>

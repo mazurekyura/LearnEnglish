@@ -14,6 +14,8 @@ namespace LearnEnglish.EfStuff
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<BankCard> BankCards { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Test> Tests { get; set; }
+
 
         public LearnEnglishDbContext(DbContextOptions options) : base(options)
         {                
