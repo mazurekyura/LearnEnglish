@@ -3,14 +3,17 @@ using AutoMapper.Configuration;
 using LearnEnglish.EfStuff;
 using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
+using LearnEnglish.EfStuff.Repositories.IRepository;
 using LearnEnglish.Models.BankCard;
 using LearnEnglish.Models.Lesson;
 using LearnEnglish.Models.Test;
 using LearnEnglish.Models.User;
 using LearnEnglish.Models.UserProfile;
 using LearnEnglish.Services;
+using LearnEnglish.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,7 +41,7 @@ namespace LearnEnglish
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {            
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<LearnEnglishDbContext>
@@ -51,6 +54,24 @@ namespace LearnEnglish
                     config.AccessDeniedPath = "/User/Denied";
                     config.Cookie.Name = "Smile";
                 });
+
+            #region registration of interfeces for repositories
+
+            services.AddScoped<IBankCardRepository>(x => new BankCardRepository(x.GetService<LearnEnglishDbContext>()));
+
+            services.AddScoped<ILessonRepository>(x => new LessonRepository(x.GetService<LearnEnglishDbContext>()));
+
+            services.AddScoped<ITestRepository>(x => new TestRepository(x.GetService<LearnEnglishDbContext>()));
+
+            services.AddScoped<IUserProfileRepository>(x => new UserProfileRepository(x.GetService<LearnEnglishDbContext>()));
+
+            services.AddScoped<IUserRepository>(x => new UserRepository(x.GetService<LearnEnglishDbContext>()));
+
+            services.AddScoped<IUserService>(x => new UserService(x.GetService<IUserRepository>(), x.GetService<IHttpContextAccessor>()));
+
+            services.AddScoped<IFileService>(x => new FileService(x.GetService<IWebHostEnvironment>()));
+
+            #endregion
 
             RegisterRepositories(services);
 
@@ -77,7 +98,7 @@ namespace LearnEnglish
 
             foreach (var repositoryType in repositories)
             {
-                services.RegisterAssistant(repositoryType);
+                services.RegisterAssistant( repositoryType);
             }
         }
 

@@ -23,13 +23,13 @@ namespace LearnEnglish.Services
             return Path.Combine(_webHostEnvironment.WebRootPath, "temp", fileName);
         }
 
-        //public string GetCatFolderPath()
-        //    => Path.Combine(_webHostEnvironment.WebRootPath, "image\\cats");
+        public string GetAvatarFolderPath()
+            => Path.Combine(_webHostEnvironment.WebRootPath, "image\\avatars");
 
-        //public string GetCatPath(long catId)
-        //    => Path.Combine(GetCatFolderPath(), $"{catId}.png");
+        public string GetAvatarPath(long id)
+            => Path.Combine(GetAvatarFolderPath(), $"{id}.png");
 
-        //public string GetCatUrl(long catId)
-        //    => $"/image/cats/{catId}.png";
+        public string GetAvatarUrl(long id)
+            => $"/image/avatars/{id}.png";
     }
 }

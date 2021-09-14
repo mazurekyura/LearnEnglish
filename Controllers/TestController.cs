@@ -58,22 +58,22 @@ namespace LearnEnglish.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
-        public IActionResult Answers(List<TestSelectedViewModel> viewmodels)
-        {
-            var user = _userService.GetCurrent();
+        //[HttpPost]
+        //public IActionResult Answers(List<TestSelectedViewModel> viewmodels)
+        //{
+        //    var user = _userService.GetCurrent();
 
-            var selectedId = viewmodels
-                .Where(x => x.)
-                .Select(x => x.Id)
-                .ToList();
+        //    var selectedId = viewmodels
+        //        .Where(x => x.)
+        //        .Select(x => x.Id)
+        //        .ToList();
 
-            user.Lessons.RemoveRange(0, user.Lessons.Count);
-            user.Lessons = _lessonRepository.FindCoursesById(selectedId);
-            _userRepository.Save(user);
+        //    user.Lessons.RemoveRange(0, user.Lessons.Count);
+        //    user.Lessons = _lessonRepository.FindCoursesById(selectedId);
+        //    _userRepository.Save(user);
 
-            return RedirectToAction("SelectedLessons");
-        }
+        //    return RedirectToAction("SelectedLessons");
+        //}
 
         //[HttpGet]
         //public IActionResult Select()

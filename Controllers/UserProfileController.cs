@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,16 +27,18 @@ namespace LearnEnglish.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IBankCardRepository _bankCardRepository;
         private readonly IUserService _userService;
+        private readonly IFileService _fileService;
 
         public UserProfileController(IMapper mapper,
-            UserProfileRepository userProfileRepository, UserRepository userRepository,
-            UserService userService, BankCardRepository bankCardRepository)
+            IUserProfileRepository userProfileRepository, IUserRepository userRepository,
+            IUserService userService, IBankCardRepository bankCardRepository, IFileService fileService)
         {
             _mapper = mapper;
             _userProfileRepository = userProfileRepository;
             _userRepository = userRepository;
             _userService = userService;
             _bankCardRepository = bankCardRepository;
+            _fileService = fileService;
         }
 
         [Authorize]
@@ -49,21 +52,17 @@ namespace LearnEnglish.Controllers
         [HttpPost]
         public IActionResult Profile(UserProfileViewModel viewModel)
         {
-            var user = _userService.GetCurrent();
-            //var myBankCard = _bankCardRepository.GetByUserId(user.Id);
+            var userProfile = _mapper.Map<UserProfile>(viewModel);
+            userProfile.Owner = _userService.GetCurrent();
+            _userProfileRepository.Save(userProfile);
 
-            var userProfile = new UserProfile()
+            var path = _fileService.GetAvatarPath(userProfile.Id);
+            using (var fileStream = new FileStream(path, FileMode.Create))
             {
-                FirstName = viewModel.FirstName,
-                LastName = viewModel.LastName,
-                AvatarUrl = viewModel.AvatarUrl,
-                Owner = user
-            };
+                viewModel.AvatarFile.CopyTo(fileStream);
+            }
 
-            //user.Courses.RemoveRange(0, user.Courses.Count);
-
-            //user.UserProfile.Name.
-
+            userProfile.AvatarUrl = _fileService.GetAvatarUrl(userProfile.Id);
             _userProfileRepository.Save(userProfile);
 
             return RedirectToAction("MyProfile");

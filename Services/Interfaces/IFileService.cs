@@ -8,5 +8,11 @@ namespace LearnEnglish.Services.Interfaces
     public interface IFileService
     {
         public string GetTempDocxFilePath();
+
+        public string GetAvatarPath(long id);
+
+        public string GetAvatarFolderPath();
+
+        public string GetAvatarUrl(long id);
     }
 }
