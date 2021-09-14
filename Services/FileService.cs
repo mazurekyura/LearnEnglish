@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using LearnEnglish.Services.Interfaces;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LearnEnglish.Services
 {
-    public class FileService
+    public class FileService : IFileService
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
 

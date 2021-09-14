@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
+using LearnEnglish.EfStuff.Repositories.IRepository;
 using LearnEnglish.Models;
 using LearnEnglish.Models.BankCard;
 using LearnEnglish.Models.Lesson;
@@ -8,6 +9,7 @@ using LearnEnglish.Models.Test;
 using LearnEnglish.Models.User;
 using LearnEnglish.Models.UserProfile;
 using LearnEnglish.Services;
+using LearnEnglish.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,16 +25,16 @@ namespace LearnEnglish.Controllers
 {
     public class TestController : Controller
     {
-        private readonly TestRepository _testRepository;
+        private readonly ITestRepository _testRepository;
         private readonly IMapper _mapper;
-        private readonly UserRepository _userRepository;
-        private readonly FileService _fileService;
-        private readonly UserService _userService;
+        private readonly IUserRepository _userRepository;
+        private readonly IFileService _fileService;
+        private readonly IUserService _userService;
 
-        public TestController(TestRepository testRepository,
+        public TestController(ITestRepository testRepository,
             IMapper mapper,
-            UserRepository userRepository,
-            FileService fileService, UserService userService)
+            IUserRepository userRepository,
+            IFileService fileService, IUserService userService)
         {
             _testRepository = testRepository;
             _mapper = mapper;

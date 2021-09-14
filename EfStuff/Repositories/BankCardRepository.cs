@@ -1,4 +1,5 @@
 ﻿using LearnEnglish.EfStuff.Model;
+using LearnEnglish.EfStuff.Repositories.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LearnEnglish.EfStuff.Repositories
 {
-    public class BankCardRepository : BaseRepository<BankCard>
+    public class BankCardRepository : BaseRepository<BankCard>, IBankCardRepository
     {
         public BankCardRepository(LearnEnglishDbContext learnEnglishDbContext) 
             : base(learnEnglishDbContext)

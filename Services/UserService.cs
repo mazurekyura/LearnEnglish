@@ -1,5 +1,7 @@
 ﻿using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
+using LearnEnglish.EfStuff.Repositories.IRepository;
+using LearnEnglish.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -9,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace LearnEnglish.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserService(UserRepository userRepository,
+        public UserService(IUserRepository userRepository,
             IHttpContextAccessor httpContextAccessor)
         {
             _userRepository = userRepository;
@@ -56,5 +58,6 @@ namespace LearnEnglish.Services
 
             return new ClaimsPrincipal(claimsIdentity);
         }
+
     }
 }

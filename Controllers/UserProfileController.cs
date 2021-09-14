@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
+using LearnEnglish.EfStuff.Repositories.IRepository;
 using LearnEnglish.Models;
 using LearnEnglish.Models.User;
 using LearnEnglish.Models.UserProfile;
 using LearnEnglish.Services;
+using LearnEnglish.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +22,10 @@ namespace LearnEnglish.Controllers
     public class UserProfileController : Controller
     {
         private readonly IMapper _mapper;
-        private readonly UserProfileRepository _userProfileRepository;
-        private readonly UserRepository _userRepository;
-        private readonly BankCardRepository _bankCardRepository;
-        private readonly UserService _userService;
+        private readonly IUserProfileRepository _userProfileRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IBankCardRepository _bankCardRepository;
+        private readonly IUserService _userService;
 
         public UserProfileController(IMapper mapper,
             UserProfileRepository userProfileRepository, UserRepository userRepository,

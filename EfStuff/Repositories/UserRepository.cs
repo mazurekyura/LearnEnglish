@@ -1,4 +1,5 @@
 ﻿using LearnEnglish.EfStuff.Model;
+using LearnEnglish.EfStuff.Repositories.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LearnEnglish.EfStuff.Repositories
 {
-    public class UserRepository : BaseRepository<User>
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         public UserRepository(LearnEnglishDbContext dbContext)
             : base(dbContext)

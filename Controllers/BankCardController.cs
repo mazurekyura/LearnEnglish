@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
+using LearnEnglish.EfStuff.Repositories.IRepository;
 using LearnEnglish.Models;
 using LearnEnglish.Models.BankCard;
 using LearnEnglish.Models.User;
 using LearnEnglish.Models.UserProfile;
 using LearnEnglish.Services;
+using LearnEnglish.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,16 +23,16 @@ namespace LearnEnglish.Controllers
 {
     public class BankCardController : Controller
     {
-        private readonly BankCardRepository _bankCardRepository;
+        private readonly IBankCardRepository _bankCardRepository;
         private readonly IMapper _mapper;
-        private readonly UserRepository _userRepository;
-        private readonly FileService _fileService;
-        private readonly UserService _userService;
+        private readonly IUserRepository _userRepository;
+        private readonly IFileService _fileService;
+        private readonly IUserService _userService;
 
-        public BankCardController(BankCardRepository bankCardRepository,
+        public BankCardController(IBankCardRepository bankCardRepository,
             IMapper mapper,
-            UserRepository userRepository,
-            FileService fileService, UserService userService)
+            IUserRepository userRepository,
+            IFileService fileService, IUserService userService)
         {
             _bankCardRepository = bankCardRepository;
             _mapper = mapper;

@@ -1,4 +1,5 @@
 ﻿using LearnEnglish.EfStuff.Model;
+using LearnEnglish.EfStuff.Repositories.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace LearnEnglish.EfStuff.Repositories
 {
     public abstract class BaseRepository<Model>
-        where Model : BaseModel
+        : IBaseRepository<Model> where Model : BaseModel
     {
         protected LearnEnglishDbContext _learnEnglishDbContext;
         protected DbSet<Model> _dbSet;

@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
+using LearnEnglish.EfStuff.Repositories.IRepository;
 using LearnEnglish.Models;
 using LearnEnglish.Models.Lesson;
 using LearnEnglish.Models.User;
 using LearnEnglish.Services;
+using LearnEnglish.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -19,12 +21,12 @@ namespace LearnEnglish.Controllers
     public class UserController : Controller
     {
         private readonly IMapper _mapper;
-        private readonly UserRepository _userRepository;
-        private readonly LessonRepository _lessonRepository;
-        private readonly UserService _userService;
+        private readonly IUserRepository _userRepository;
+        private readonly ILessonRepository _lessonRepository;
+        private readonly IUserService _userService;
 
-        public UserController(IMapper mapper, UserRepository userRepository,
-            UserService userService, LessonRepository lessonRepository)
+        public UserController(IMapper mapper, IUserRepository userRepository,
+            IUserService userService, ILessonRepository lessonRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;
