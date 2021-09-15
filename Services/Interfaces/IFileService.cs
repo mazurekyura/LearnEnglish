@@ -14,5 +14,11 @@ namespace LearnEnglish.Services.Interfaces
         public string GetAvatarFolderPath();
 
         public string GetAvatarUrl(long id);
+
+        public string GetBookFolderPath();
+
+        public string GetBookPath(long id);
+
+        public string GetBookUrl(long id);
     }
 }

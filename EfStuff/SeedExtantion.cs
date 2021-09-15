@@ -24,9 +24,39 @@ namespace LearnEnglish.EfStuff
                 InitBankCards(service.ServiceProvider);
 
                 InitCourse(service.ServiceProvider);
+
+                InitBook(service.ServiceProvider);
             }
 
             return host;
+        }
+
+        private static void InitBook(IServiceProvider service)
+        {
+            var bookRepository = service.GetService<BookRepository>();
+            var userRepository = service.GetService<UserRepository>();
+            var admin = userRepository.Get(Admin);
+            var bookDefaults = new List<Book>() {
+                new Book()
+                {
+                    Name= "Book1",
+                    Url = "https://i.pinimg.com/736x/75/1d/4b/751d4bda81598c27a15ac46874b3a305.jpg"
+                },
+                new Book()
+                {
+                    Name= "Book2",
+                    Url = "https://i.pinimg.com/originals/2c/86/5d/2c865d628ff955fbc87e1ab106236dab.jpg"
+                }
+            };
+
+            foreach (var book in bookDefaults)
+            {
+                if (!bookRepository.Exist(book.Name))
+                {
+                    book.Creater = admin;
+                    bookRepository.Save(book);
+                }
+            }
         }
 
         private static void InitUsers(IServiceProvider service)

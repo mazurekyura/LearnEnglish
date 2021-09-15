@@ -4,14 +4,16 @@ using LearnEnglish.EfStuff;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LearnEnglish.Migrations
 {
     [DbContext(typeof(LearnEnglishDbContext))]
-    partial class LearnEnglishDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210915065636_addBook")]
+    partial class addBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,18 +54,15 @@ namespace LearnEnglish.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("CreaterId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("OwnerId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreaterId");
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Books");
                 });
@@ -195,11 +194,11 @@ namespace LearnEnglish.Migrations
 
             modelBuilder.Entity("LearnEnglish.EfStuff.Model.Book", b =>
                 {
-                    b.HasOne("LearnEnglish.EfStuff.Model.User", "Creater")
+                    b.HasOne("LearnEnglish.EfStuff.Model.User", "Owner")
                         .WithMany("Books")
-                        .HasForeignKey("CreaterId");
+                        .HasForeignKey("OwnerId");
 
-                    b.Navigation("Creater");
+                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("LearnEnglish.EfStuff.Model.UserProfile", b =>

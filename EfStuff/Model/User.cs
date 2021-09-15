@@ -20,5 +20,7 @@ namespace LearnEnglish.EfStuff.Model
         public virtual List<BankCard> BankCards { get; set; }
 
         public virtual List<Lesson> Lessons { get; set; }
+
+        public virtual List<Book> Books { get; set; }
     }
 }

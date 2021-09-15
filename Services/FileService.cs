@@ -31,5 +31,14 @@ namespace LearnEnglish.Services
 
         public string GetAvatarUrl(long id)
             => $"/image/avatars/{id}.png";
+
+        public string GetBookFolderPath()
+            => Path.Combine(_webHostEnvironment.WebRootPath, "image\\books");
+
+        public string GetBookPath(long id)
+            => Path.Combine(GetBookFolderPath(), $"{id}.png");
+
+        public string GetBookUrl(long id)
+            => $"/image/books/{id}.png";
     }
 }

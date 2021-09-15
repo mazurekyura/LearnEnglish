@@ -15,7 +15,7 @@ namespace LearnEnglish.EfStuff
         public DbSet<BankCard> BankCards { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Test> Tests { get; set; }
-
+        public DbSet<Book> Books { get; set; }
 
         public LearnEnglishDbContext(DbContextOptions options) : base(options)
         {                
@@ -45,6 +45,9 @@ namespace LearnEnglish.EfStuff
             builder.HasMany(x => x.BankCards)
                 .WithOne(x => x.Owner)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(x => x.Books)
+                .WithOne(x => x.Creater);
 
             builder.Property(x => x.Role).HasDefaultValue(Role.User);
 

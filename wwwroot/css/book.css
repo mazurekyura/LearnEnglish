@@ -1,0 +1,19 @@
+﻿.books {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buttons {
+    display: flex;
+}
+
+.button {
+    flex: 1;
+    text-align: center;
+    border: 1px red solid;
+    margin: 5px;
+}
+
+
+
+

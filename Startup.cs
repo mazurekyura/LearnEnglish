@@ -5,6 +5,7 @@ using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
 using LearnEnglish.EfStuff.Repositories.IRepository;
 using LearnEnglish.Models.BankCard;
+using LearnEnglish.Models.Book;
 using LearnEnglish.Models.Lesson;
 using LearnEnglish.Models.Test;
 using LearnEnglish.Models.User;
@@ -71,6 +72,8 @@ namespace LearnEnglish
 
             services.AddScoped<IFileService>(x => new FileService(x.GetService<IWebHostEnvironment>()));
 
+            services.AddScoped<IBookRepository>(x => new BookRepository(x.GetService<LearnEnglishDbContext>()));
+
             #endregion
 
             RegisterRepositories(services);
@@ -110,13 +113,17 @@ namespace LearnEnglish
 
             provider.CreateMap<BankCardAddViewModel, BankCard>();
 
-            provider.CreateMap<LessonAddViewModel, Lesson>();
+            provider.CreateMap<LessonViewModel, Lesson>();
 
             provider.CreateMap<TestAddViewModel, Test>();
 
             provider.CreateMap<RegistrationViewModel, User>();
 
             provider.CreateMap<UserProfileViewModel, UserProfile>();
+
+            provider.CreateMap<BookViewModel, Book>();
+            
+            provider.CreateMap<Book, BookViewModel>();
 
             var mapperConfiguration = new MapperConfiguration(provider);
             var mapper = new Mapper(mapperConfiguration);

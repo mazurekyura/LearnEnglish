@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\image\avatars\" />
+    <Folder Include="wwwroot\image\books\" />
     <Folder Include="wwwroot\temp\" />
   </ItemGroup>
 
