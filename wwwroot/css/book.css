@@ -14,6 +14,7 @@
     margin: 5px;
 }
 
-
-
-
+.image {
+    max-width: 100px;
+    max-height: 100px;
+}

@@ -15,7 +15,7 @@
 
     @RenderSection("Head", false)
 </head>
-<body>    
+<body>
     <header>
         <ul class="menu-main">
             <li><img src="~/image/logo.png" /></li>
@@ -49,7 +49,7 @@
                 <li><a href="/Book/Add">Add book</a></li>
                 <li><a href="/Book/Books">All books</a></li>
             </ul>
-                       
+
 
             <button class="card">@LearnEnglish.Localize.BankCard.Bank_Card</button>
             <div class="card-option hidden">
@@ -62,27 +62,28 @@
             @RenderBody()
         </div>
     </div>
-    
-    <div class="footer">
-        <div class="rights">
-            © All rights reserved - 2021 - LearnEnglish - TMS2021
-        </div>        
-        
-        <div class="language">
-            <select>
-                <option value="ru-RU">Рус</option>
-                <option value="en-EN">Eng</option>
-                <option value="zz-ZZ">ZZ</option>
-            </select>
-        </div>              
 
-        <div class="contacts">
-                <div class="social-media">
-                    <img class="footer-icon facebook" src="/image/icon/facebook.png">
-                    <img class="footer-icon instagram" src="/image/icon/instagram.png">
-                    <img class="footer-icon instagram" src="/image/icon/telegram.png">
-                </div>
-        </div>
+    <div class="footer">
+        <span class="rights">
+            © All rights reserved - 2021 - LearnEnglish - TMS2021
+        </span>
+
+        <span class="language">
+            Language
+            <select>
+                <option value="ru-RU">Русский</option>
+                <option value="en-EN">English</option>
+                <option value="pl-PL">Polskie</option>
+            </select>
+        </span>
+
+        <span class="contacts">
+            <span class="social-media">
+                <a href="https://facebook.com"><img class="footer-icon" src="/image/icon/facebook.png"></a>
+                <a href="https://instagram.com"><img class="footer-icon" src="/image/icon/instagram.png"></a>
+                <a href="https://telegram.org"><img class="footer-icon" src="/image/icon/telegram.png"></a>
+            </span>
+        </span>
     </div>
 </body>
 </html>
