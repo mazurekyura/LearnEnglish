@@ -85,12 +85,6 @@ namespace LearnEnglish.Controllers
 
 
 
-
-                var selectedLessonsId = selectedLessons
-                .Where(x => x.IsSelected)
-                .Select(x => x.Id)
-                .ToList();
-
             return $"правильных ответов {numberCorrectAnswers}";
         }
 

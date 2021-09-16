@@ -1,29 +1,18 @@
 ﻿@model LearnEnglish.Models.UserProfile.UserProfileViewModel
 
-<form action="/UserProfile/Profile" method="post">
-    <div>
-        FirstName @Html.TextBoxFor(x => x.FirstName)
-    </div>
-
-    <div>
-        LastName @Html.TextBoxFor(x => x.LastName)
-    </div>
-
-    <div>
-        Avatar: <input type="file" name="AvatarFile" />
-    </div>
-
-    <input class="button" type="button" value="Добавить карту"
-           onclick="location.href='/BankCard/BankCardAdd'" />
-
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/KHtQrVwPJWo" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen></iframe>
-
-
-    <div>
-        <input type="submit" value="заполнить" />
-    </div>
-</form>
+<table border="1" align="center" cellspacing="0" cellpadding="10">
+    <caption>Профиль пользователя</caption>
+    <tr>
+        <th>FirstName</th>
+        <th>@Model.FirstName</th>
+    </tr>
+    <tr>
+        <th>LastName</th>
+        <th>@Model.LastName</th>
+    </tr>
+    <tr>
+        <th>Avatar</th>
+        <th><img src="@Model.AvatarUrl"/></th>
+    </tr>    
+</table>
+<a href="/UserProfile/Profile">изменить данные</a>

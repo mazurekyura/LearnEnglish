@@ -121,6 +121,8 @@ namespace LearnEnglish
 
             provider.CreateMap<UserProfileViewModel, UserProfile>();
 
+            provider.CreateMap<UserProfile, UserProfileViewModel>();
+
             provider.CreateMap<BookViewModel, Book>();
             
             provider.CreateMap<Book, BookViewModel>();

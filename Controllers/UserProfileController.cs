@@ -72,14 +72,9 @@ namespace LearnEnglish.Controllers
         public IActionResult MyProfile()
         {
             var user = _userService.GetCurrent();
-
-            var viewModel = new UserProfileViewModel
-            {
-                FirstName = user.UserProfile.FirstName,
-                LastName = user.UserProfile.LastName,
-                AvatarUrl = user.UserProfile.AvatarUrl
-            };
-
+            var userProfile = _userProfileRepository.GetByUserId(user.Id);
+            var viewModel = _mapper.Map<UserProfileViewModel>(userProfile);
+                       
             return View(viewModel);
         }
     }

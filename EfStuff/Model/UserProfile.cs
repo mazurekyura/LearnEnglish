@@ -15,6 +15,10 @@ namespace LearnEnglish.EfStuff.Model
 
         public string AvatarUrl { get; set; }
 
+        public string Sex { get; set; }
+
+        public DateTime BirthDate { get; set; }
+
         public long UserId { get; set; }
 
         public virtual User Owner { get; set; }

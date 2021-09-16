@@ -13,5 +13,31 @@ namespace LearnEnglish.EfStuff.Repositories
             : base(learnEnglishDbContext)
         {
         }
+
+        public UserProfile GetByUserId(long userId)
+        {
+            return _dbSet
+                .Where(x => x.Owner.Id == userId)
+                .FirstOrDefault();
+        }
+
+        public void UpdateProfile(UserProfile userProfile, string userID)
+        {
+            if (userProfile.Id == 0)
+            {
+                _dbSet.Add(userProfile);
+            }
+            else
+            {
+                var userProfileToUpdate = _dbSet.Where(x => x.Id == userProfile.Id).FirstOrDefault();
+
+                if (userProfileToUpdate != null)
+                {
+                    _learnEnglishDbContext.Entry(userProfileToUpdate).CurrentValues.SetValues(userProfile);
+                }
+            }
+
+            _learnEnglishDbContext.SaveChanges();               
+        }
     }
 }
