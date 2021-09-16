@@ -1,11 +1,13 @@
-﻿@model LearnEnglish.Models.Book.BookViewModel
+﻿@using LearnEnglish.Localize
+
+@model LearnEnglish.Models.Book.BookViewModel
 
 <form action="/Book/Add" method="post" id="someForm" enctype="multipart/form-data">
     <div>
-        Name: <input name="name" />
-    </div>    
+        @Book.Name <input name="name" />
+    </div>
     <div>
-        BookImage: <input type="file" name="BookFile" />
+        @Book.Book_Image<input type="file" name="BookFile" />
     </div>
     <div>
         <input type="submit" value="Send" />

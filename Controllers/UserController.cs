@@ -123,7 +123,7 @@ namespace LearnEnglish.Controllers
                 .ToList();
 
             user.Lessons.RemoveRange(0, user.Lessons.Count);
-            user.Lessons = _lessonRepository.FindCoursesById(selectedLessonsId);
+            user.Lessons = _lessonRepository.FindLessonsById(selectedLessonsId);
             _userRepository.Save(user);
 
             return RedirectToAction("SelectedLessons");

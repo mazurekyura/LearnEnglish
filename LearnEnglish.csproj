@@ -24,12 +24,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>BankCard.resx</DependentUpon>
     </Compile>
+    <Compile Update="Localize\Book.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Book.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Localize\BankCard.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BankCard.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localize\Book.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Book.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

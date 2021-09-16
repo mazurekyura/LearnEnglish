@@ -12,5 +12,9 @@ namespace LearnEnglish.EfStuff.Model
         public string AnswerTrue { get; set; }
 
         public string AnswerFasle { get; set; }
+
+        public string AnswerFasleSecond { get; set; }
+
+        public string AnswerFasleThird { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace LearnEnglish.EfStuff.Repositories.IRepository
     {
         public bool Exist(string lessonName);
 
-        public List<Lesson> FindCoursesById(List<long> ids);
+        public List<Lesson> FindLessonsById(List<long> ids);
     }
 }

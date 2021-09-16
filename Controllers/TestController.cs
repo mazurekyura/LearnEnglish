@@ -58,36 +58,73 @@ namespace LearnEnglish.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //[HttpPost]
-        //public IActionResult Answers(List<TestSelectedViewModel> viewmodels)
-        //{
-        //    var user = _userService.GetCurrent();
+        [HttpGet]
+        public IActionResult Select()
+        {
+            var allTests = _testRepository.GetAll();
 
-        //    var selectedId = viewmodels
-        //        .Where(x => x.)
-        //        .Select(x => x.Id)
-        //        .ToList();
+            var viewModels = allTests.Select(x => new TestSelectedViewModel
+            {
+                Id = x.Id,
+                Question = x.Question,
+                AnswerTrue = x.AnswerTrue,
+                AnswerFalse = x.AnswerFasle,
+                AnswerFasleSecond = x.AnswerFasleSecond,
+                AnswerFasleThird = x.AnswerFasleThird                
+            }).ToList();
+            
+            return View(viewModels);
+        }
 
-        //    user.Lessons.RemoveRange(0, user.Lessons.Count);
-        //    user.Lessons = _lessonRepository.FindCoursesById(selectedId);
-        //    _userRepository.Save(user);
+        [HttpPost]
+        public string Answers(List<TestSelectedViewModel> viewModels)
+        {            
+            var numberCorrectAnswers = viewModels.Count(x => x.IsSelectAnswerTrue && !x.IsSelectAnswerFalse);
 
-        //    return RedirectToAction("SelectedLessons");
-        //}
+            var uncorrectAnswers = viewModels.Where(x => !x.IsSelectAnswerTrue).Select(x => x.Id).ToList();
 
-        //[HttpGet]
-        //public IActionResult Select()
-        //{
-        //    var userLessonsId = _userService.GetCurrent().Lessons.Select(x => x.Id).ToList();
 
-        //    var viewModel = _lessonRepository.GetAll().Select(x => new LessonSelectedViewModel
-        //    {
-        //        LessonName = x.Name,
-        //        Id = x.Id,
-        //        IsSelected = userLessonsId.Contains(x.Id)
-        //    }).ToList();
 
-        //    return View(viewModel);
-        //}
-    }
+
+                var selectedLessonsId = selectedLessons
+                .Where(x => x.IsSelected)
+                .Select(x => x.Id)
+                .ToList();
+
+            return $"правильных ответов {numberCorrectAnswers}";
+        }
+
+
+            //[HttpPost]
+            //public IActionResult Answers(List<TestSelectedViewModel> viewmodels)
+            //{
+            //    var user = _userService.GetCurrent();
+
+            //    var selectedId = viewmodels
+            //        .Where(x => x.)
+            //        .Select(x => x.Id)
+            //        .ToList();
+
+            //    user.Lessons.RemoveRange(0, user.Lessons.Count);
+            //    user.Lessons = _lessonRepository.FindCoursesById(selectedId);
+            //    _userRepository.Save(user);
+
+            //    return RedirectToAction("SelectedLessons");
+            //}
+
+            //[HttpGet]
+            //public IActionResult Select()
+            //{
+            //    var userLessonsId = _userService.GetCurrent().Lessons.Select(x => x.Id).ToList();
+
+            //    var viewModel = _lessonRepository.GetAll().Select(x => new LessonSelectedViewModel
+            //    {
+            //        LessonName = x.Name,
+            //        Id = x.Id,
+            //        IsSelected = userLessonsId.Contains(x.Id)
+            //    }).ToList();
+
+            //    return View(viewModel);
+            //}
+        }
 }

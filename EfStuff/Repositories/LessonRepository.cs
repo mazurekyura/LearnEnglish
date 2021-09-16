@@ -19,7 +19,7 @@ namespace LearnEnglish.EfStuff.Repositories
             return _dbSet.Any(x => x.Name == lessonName);
         }
 
-        public List<Lesson> FindCoursesById(List<long> ids)
+        public List<Lesson> FindLessonsById(List<long> ids)
         {
             return _dbSet
                  .Where(x => ids.Contains(x.Id))

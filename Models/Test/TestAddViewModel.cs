@@ -12,5 +12,9 @@ namespace LearnEnglish.Models.Test
         public string AnswerTrue { get; set; }
 
         public string AnswerFasle { get; set; }
+
+        public string AnswerFasleSecond { get; set; }
+
+        public string AnswerFasleThird { get; set; }
     }
 }

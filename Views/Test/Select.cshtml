@@ -1,23 +1,32 @@
 ﻿@model List<LearnEnglish.Models.Test.TestSelectedViewModel>
 
-
 <form action="/Test/Answers" method="post">
-    <div class="select-favorite-user">
-        @for (int i = 0; i < Model.Count(); i++)
-        {
-            <div class="name">
-                @Html.HiddenFor(m => Model[i].Id)
-                @Html.DisplayFor(x => Model[i].Question)
-            </div>
-            <div class=" select">
-                @Html.RadioButton("", Model[i].AnswerTrue.ToString())
-                <span>@Model[i].AnswerTrue</span><br />
-                @Html.RadioButton("", Model[i].AnswerFalse.ToString())
-                <span>@Model[i].AnswerFalse</span><br />
-            </div>
-        }
-    </div>
+
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <div class="name">
+            @Html.HiddenFor(m => Model[i].Id)
+            @Html.DisplayFor(x => Model[i].Question)
+        </div>
+        <span>
+            @Html.DisplayFor(x => Model[i].AnswerTrue)
+            @Html.CheckBoxFor(x => Model[i].IsSelectAnswerTrue)
+        </span>
+        <span>
+            @Html.DisplayFor(x => Model[i].AnswerFalse)
+            @Html.CheckBoxFor(x => Model[i].IsSelectAnswerFalse)
+        </span>
+        <span>
+            @Html.DisplayFor(x => Model[i].AnswerFasleSecond)
+            @Html.CheckBoxFor(x => Model[i].IsSelectAnswerFalseSecond)
+        </span>
+        <span>
+            @Html.DisplayFor(x => Model[i].AnswerFasleThird)
+            @Html.CheckBoxFor(x => Model[i].IsSelectAnswerFalseThird)
+        </span>
+    }
     <div>
-        <input type="submit" name="Select" />
+        <input type="submit" name="Select" value="Проверить" />
     </div>
+
 </form>
