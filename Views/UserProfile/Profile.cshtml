@@ -1,22 +1,30 @@
-﻿@model LearnEnglish.Models.UserProfile.UserProfileViewModel
+﻿@using LearnEnglish.Models.UserProfile
+
+@model UserProfileViewModel
 
 <form action="/UserProfile/Profile" method="post" enctype="multipart/form-data">
-    <div>
-        FirstName @Html.TextBoxFor(x => x.FirstName)
-    </div>
+        <div>
+            FirstName @Html.TextBoxFor(x => x.FirstName)
+        </div>
 
-    <div>
-        LastName @Html.TextBoxFor(x => x.LastName)
-    </div>
+        <div>
+            LastName @Html.TextBoxFor(x => x.LastName)
+        </div>
 
-    <div>
-        Avatar: <input type="file" name="AvatarFile" />
-    </div>
+        <div>
+            Age @Html.TextBoxFor(x => x.Age)
+        </div>
 
-    <input class="button" type="button" value="Добавить карту"
-           onclick="location.href='/BankCard/BankCardAdd'" />
+        <div>
+            Avatar: <input type="file" name="AvatarFile" />
+        </div>
 
-    <div>
-        <input type="submit" value="заполнить" />
-    </div>
+        <div>
+            <input class="button" type="button" value="Добавить карту"
+                   onclick="location.href='/BankCard/BankCardAdd'" />
+        </div>        
+
+        <div>
+            <input type="submit" value="заполнить" />
+        </div>
 </form>

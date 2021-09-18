@@ -42,18 +42,18 @@ namespace LearnEnglish.Controllers
         }
 
         [HttpGet]
-        public IActionResult BankCardGet(long id)
+        public IActionResult BankCardGet()
         {
-            var card = _bankCardRepository.Get(id);
+            var user = _userService.GetCurrent();
+            var cards = _bankCardRepository.GetByUserId(user.Id);
+            var viewModels = _mapper.Map<List<BankCardGetViewModel>>(cards);
 
-            if (card == null)
-            {
-                throw new ArgumentNullException(nameof(card), $"Карты с id={id} нет в базе данных");
-            }
+            //if (card == null)
+            //{
+            //    throw new ArgumentNullException(nameof(card), $"Карты с id={id} нет в базе данных");
+            //}
 
-            var viewModel = _mapper.Map<BankCardGetViewModel>(card);
-
-            return View(viewModel);
+            return View(viewModels);
         }
 
         [Authorize]
@@ -92,7 +92,8 @@ namespace LearnEnglish.Controllers
             newCard.Owner = _userService.GetCurrent();
             _bankCardRepository.Save(newCard);
 
-            return Redirect(Request.Headers["Referer"].ToString());
+            return RedirectToAction("BankCardGet");
+            //return Redirect(Request.Headers["Referer"].ToString());
         }
 
         [HttpGet]
@@ -133,13 +134,14 @@ namespace LearnEnglish.Controllers
 
             using (var file = DocX.Create(pathToFile))
             {
-                Table table = file.AddTable(allCards.Count + 1, 4);
+                Table table = file.AddTable(allCards.Count + 1, 5);
                 table.Alignment = Alignment.center;
                 table.Design = TableDesign.TableGrid;
                 table.Rows[0].Cells[0].Paragraphs.First().Append("Id card");
                 table.Rows[0].Cells[1].Paragraphs.First().Append("Card Number");
                 table.Rows[0].Cells[2].Paragraphs.First().Append("Validity Month");
                 table.Rows[0].Cells[3].Paragraphs.First().Append("Validity Year");
+                table.Rows[0].Cells[4].Paragraphs.First().Append("Owner ID");
 
                 for (int i = 1; i <= allCards.Count; i++)
                 {
@@ -147,6 +149,7 @@ namespace LearnEnglish.Controllers
                     table.Rows[i].Cells[1].Paragraphs.First().Append(allCards[i - 1].CardNumber);
                     table.Rows[i].Cells[2].Paragraphs.First().Append(allCards[i - 1].ValidityMonth.ToString());
                     table.Rows[i].Cells[3].Paragraphs.First().Append(allCards[i - 1].ValidityYear.ToString());
+                    table.Rows[i].Cells[4].Paragraphs.First().Append(allCards[i - 1].OwnerId.ToString());
                 }
 
                 file.InsertTable(table);

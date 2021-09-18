@@ -58,6 +58,9 @@ namespace LearnEnglish.EfStuff
         {
             builder.Property(x => x.FullName)
                 .HasComputedColumnSql("[FirstName] + ' ' + [LastName]");
+
+            builder.Property(x => x.FirstName).HasDefaultValue("FirstName");
+            builder.Property(x => x.LastName).HasDefaultValue("LastName");
         }
 
         private void LessonConfigure(EntityTypeBuilder<Lesson> builder)

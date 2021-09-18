@@ -14,5 +14,7 @@ namespace LearnEnglish.Models.BankCard
         public int ValidityMonth { get; set; }
 
         public int ValidityYear { get; set; }
+
+        public long OwnerId { get; set; }
     }
 }

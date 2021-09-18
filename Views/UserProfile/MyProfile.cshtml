@@ -1,18 +1,39 @@
-﻿@model LearnEnglish.Models.UserProfile.UserProfileViewModel
+﻿@using LearnEnglish.Models.UserProfile
+
+@model UserProfileViewModel
 
 <table border="1" align="center" cellspacing="0" cellpadding="10">
     <caption>Профиль пользователя</caption>
     <tr>
         <th>FirstName</th>
-        <th>@Model.FirstName</th>
+        <th>
+            @Model.FirstName
+        </th>
+        <th></th>
     </tr>
     <tr>
         <th>LastName</th>
         <th>@Model.LastName</th>
+        <th></th>
+    </tr>
+    <tr>
+        <th>Age</th>
+        <th>@Model.Age</th>
+        <th></th>
     </tr>
     <tr>
         <th>Avatar</th>
-        <th><img src="@Model.AvatarUrl"/></th>
-    </tr>    
+        <th><img src="@Model.AvatarUrl" /></th>
+        <th>
+            <form action="/UserProfile/MyProfile" method="post" enctype="multipart/form-data">
+                <div>
+                    Новый аватар:
+                    <input type="file" name="@nameof(UserProfileUpdateViewModel.Avatar)" />
+                </div>
+                <div>
+                    <input type="submit" value="Обновить аватар" />
+                </div>
+            </form>
+        </th>
+    </tr>
 </table>
-<a href="/UserProfile/Profile">изменить данные</a>

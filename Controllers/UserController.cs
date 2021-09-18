@@ -95,7 +95,7 @@ namespace LearnEnglish.Controllers
 
                 await HttpContext.SignInAsync(_userService.GetPrincipal(user));
 
-                return RedirectToAction("Profile", "User");
+                return RedirectToAction("Profile", "UserProfile");
             }
             else
             {

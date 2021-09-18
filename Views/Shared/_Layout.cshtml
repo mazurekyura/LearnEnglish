@@ -18,8 +18,7 @@
 <body>
     <header>
         <ul class="menu-main">
-            <li><img src="~/image/logo.png" /></li>
-            <li><a href="">Learn English</a></li>
+            <li><img src="~/image/logo.png" /><a href="">Learn English</a></li>
             <li><a href="">Video</a></li>
             <li><a href="">Audio</a></li>
             <li><a href="">Text</a></li>
@@ -28,36 +27,42 @@
     <div class="center-block">
         <div class="menu">
             <ul>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li><a href="/UserProfile/MyProfile">MyProfile</a></li>
-                    <li><a href="/Lesson/Select">LessonSelect</a></li>
-                    <li><a href="/User/SelectedLessons">SelectedLessons</a></li>
-                    <li><a href="/User/Logout">Exit</a></li>
-                    @if (userService.IsAdmin())
-                    {
-                        <li><a href="/Lesson/Add">LessonAdd</a></li>
-                    }
-                }
-                else
+                @if (!User.Identity.IsAuthenticated)
                 {
                     <li><a href="/User/Registration">Registration</a></li>
                     <li><a href="/User/Login">Login</a></li>
                 }
-                <li><a href="">Lessons</a></li>
-                <li><a href="/Test/Add">AddTest</a></li>
-                <li><a href="/Book/Add">Add book</a></li>
-                <li><a href="/Book/Books">All books</a></li>
-                <li><a href="/Test/Select">All tests</a></li>
+                else
+                {
+                    <li><a href="">Lessons</a></li>
+                    <li><a href="/Book/Books">All books</a></li>
+                    <li><a href="/Test/Select">All tests</a></li>
+                    <li><a href="/Lesson/Select">LessonSelect</a></li>
+                    <li><a href="/User/SelectedLessons">MySelectedLessons</a></li>
+
+                    <li><a href="/UserProfile/MyProfile">MyProfile</a></li>
+                    <li><a href="/BankCard/BankCardAdd">AddBankCard</a></li>
+                    <li><a href="/BankCard/BankCardGet">MyBankCards</a></li>
+                    <li><a href="/User/Logout">Exit</a></li>
+
+                    @if (userService.IsAdmin())
+                    {
+                        <li><a href="/Lesson/Add">LessonAdd</a></li>
+                        <li><a href="/Test/Add">AddTest</a></li>
+                        <li><a href="/Book/Add">Add book</a></li>
+                        <li><a href="/BankCard/BankCardAll">@LearnEnglish.Localize.BankCard.See_All</a><br></li>
+
+                    }
+
+                    @if (userService.IsModerator())
+                    {
+                        <li><a href="/Lesson/Add">LessonAdd</a></li>
+                        <li><a href="/Test/Add">AddTest</a></li>
+                        <li><a href="/Book/Add">Add book</a></li>
+                    }
+                }
             </ul>
 
-
-            <button class="card">@LearnEnglish.Localize.BankCard.Bank_Card</button>
-            <div class="card-option hidden">
-                <a href="/BankCard/BankCardAdd">@LearnEnglish.Localize.BankCard.Add_Сard</a><br>
-                <a href="/BankCard/BankCardRemove">@LearnEnglish.Localize.BankCard.Remove_Сard</a><br>
-                <a href="/BankCard/BankCardAll">@LearnEnglish.Localize.BankCard.See_All</a><br>
-            </div>
         </div>
         <div class="content">
             @RenderBody()

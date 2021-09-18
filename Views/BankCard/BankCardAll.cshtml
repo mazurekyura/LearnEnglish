@@ -14,6 +14,7 @@
             <th>@BankCard.Number_Of_Card</th>
             <th>@BankCard.Validity_Month</th>
             <th>@BankCard.Validity_Year</th>
+            <th>@BankCard.Id_Owner</th>
             <th></th>
         </tr>
         @foreach (var card in Model.BankCards)
@@ -23,6 +24,7 @@
                 <th>@card.CardNumber</th>
                 <th>@card.ValidityMonth</th>
                 <th>@card.ValidityYear</th>
+                <th>@card.OwnerId</th>
                 <th>
                     <input class="button"
                            type="button"

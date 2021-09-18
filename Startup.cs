@@ -113,6 +113,11 @@ namespace LearnEnglish
 
             provider.CreateMap<BankCardAddViewModel, BankCard>();
 
+            provider.CreateMap<BankCard, BankCardGetViewModel>();
+                //.ForMember(
+                //nameof(BankCardGetViewModel.OwnerId),
+                //config => config.MapFrom(bankCard => bankCard.OwnerId));
+
             provider.CreateMap<LessonViewModel, Lesson>();
 
             provider.CreateMap<TestAddViewModel, Test>();

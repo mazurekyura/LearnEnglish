@@ -13,11 +13,9 @@ namespace LearnEnglish.EfStuff.Model
 
         public string LastName { get; set; }
 
+        public int Age { get; set; }
+
         public string AvatarUrl { get; set; }
-
-        public string Sex { get; set; }
-
-        public DateTime BirthDate { get; set; }
 
         public long UserId { get; set; }
 

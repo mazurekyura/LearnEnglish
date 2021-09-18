@@ -43,6 +43,43 @@ namespace LearnEnglish.Controllers
 
         [Authorize]
         [HttpGet]
+        public IActionResult MyProfile()
+        {
+            var user = _userService.GetCurrent();
+            var userProfile = _userProfileRepository.GetByUserId(user.Id);
+            var viewModel = _mapper.Map<UserProfileViewModel>(userProfile);
+
+            return View(viewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> MyProfile(UserProfileUpdateViewModel viewModel)
+        {
+            var user = _userService.GetCurrent();
+            var userProfile = _userProfileRepository.GetByUserId(user.Id);
+
+            if (viewModel.Avatar != null)
+            {
+                var path = _fileService.GetAvatarPath(userProfile.Id);
+                using (var fileStream = new FileStream(path, FileMode.OpenOrCreate))
+                {
+                    await viewModel.Avatar.CopyToAsync(fileStream);
+                }
+                userProfile.AvatarUrl = _fileService.GetAvatarUrl(userProfile.Id);
+
+                //_logger.LogInformation($"User {user.Id} change avatar");
+            }
+
+            //user.Email = viewModel.Email;
+
+            _userProfileRepository.Save(userProfile);
+
+            return RedirectToAction("MyProfile");
+        }
+
+        [Authorize]
+        [HttpGet]
         public IActionResult Profile()
         {
             return View();
@@ -50,7 +87,7 @@ namespace LearnEnglish.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Profile(UserProfileViewModel viewModel)
+        public async Task<IActionResult> Profile(UserProfileViewModel viewModel)
         {
             var userProfile = _mapper.Map<UserProfile>(viewModel);
             userProfile.Owner = _userService.GetCurrent();
@@ -59,23 +96,13 @@ namespace LearnEnglish.Controllers
             var path = _fileService.GetAvatarPath(userProfile.Id);
             using (var fileStream = new FileStream(path, FileMode.Create))
             {
-                viewModel.AvatarFile.CopyTo(fileStream);
+                await viewModel.AvatarFile.CopyToAsync(fileStream);
             }
 
             userProfile.AvatarUrl = _fileService.GetAvatarUrl(userProfile.Id);
             _userProfileRepository.Save(userProfile);
 
             return RedirectToAction("MyProfile");
-        }
-
-        [HttpGet]
-        public IActionResult MyProfile()
-        {
-            var user = _userService.GetCurrent();
-            var userProfile = _userProfileRepository.GetByUserId(user.Id);
-            var viewModel = _mapper.Map<UserProfileViewModel>(userProfile);
-                       
-            return View(viewModel);
         }
     }
 }

@@ -8,6 +8,6 @@ namespace LearnEnglish.Models.UserProfile
 {
     public class UserProfileUpdateViewModel
     {        
-        public IFormFile AvatarFile { get; set; }
+        public IFormFile Avatar { get; set; }
     }
 }

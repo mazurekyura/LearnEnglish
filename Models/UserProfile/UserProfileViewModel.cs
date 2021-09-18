@@ -13,6 +13,8 @@ namespace LearnEnglish.Models.UserProfile
 
         public string LastName { get; set; }
 
+        public int Age { get; set; }
+
         public string AvatarUrl { get; set; }
 
         public IFormFile AvatarFile { get; set; }
