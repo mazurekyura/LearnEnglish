@@ -34,37 +34,5 @@ namespace LearnEnglish.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        //private IHostingEnvironment Environment;
-
-        //public HomeController(IHostingEnvironment _environment)
-        //{
-        //    Environment = _environment;
-        //}
-
-        //public IActionResult Music()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public IActionResult Music(IFormFile postedFile)
-        //{
-        //    string path = Path.Combine(this.Environment.WebRootPath, "Uploads");
-
-        //    if (!Directory.Exists(path))
-        //    {
-        //        Directory.CreateDirectory(path);
-        //    }
-
-        //    string fileName = Path.GetFileName(postedFile.FileName);
-        //    using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
-        //    {
-        //        postedFile.CopyTo(stream);
-        //    }
-
-        //    ViewBag.Data = "data:audio/wav;base64," + Convert.ToBase64String(System.IO.File.ReadAllBytes(Path.Combine(path, fileName)));
-        //    return View();
-        //}
     }
 }

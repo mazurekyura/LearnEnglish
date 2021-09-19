@@ -1,8 +1,29 @@
-﻿@{
+﻿@using LearnEnglish.Localize
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
+@section Head{
+    <link rel="stylesheet" href="~/css/general.css">
+}
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="index">@General.Welcome_general</h1>
+    
+    <div class="index-element">
+        <div class="index-element-unit">
+            <p>Smile:)</p>
+            <p>- How much time?</p>
+            <p>- Six watch.</p>
+            <p>- Such much?</p>
+            <p>- Whom how...</p>
+            <p>- MGIMO finished?</p>
+            <p>- Ask!</p>
+        </div>
+        <div class="map">
+            <img src="~/image/general/map.jpg" class="map-size"/>
+        </div>
+    </div>
+    <p>@General.Start <a href="General/Video">@General.Learning...</a>.</p>       
 </div>

@@ -1,0 +1,27 @@
+﻿.map {
+    width: 400px;
+    height: 400px;
+    flex: 3;
+}
+
+.index {
+    text-align: center;
+}
+
+.index-element {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.index-element-unit {
+    width: 400px;
+    height: 350px;
+    flex: 1;
+    text-align: center;
+}
+
+.map-size {
+    max-width: 800px;
+    max-height: 600px;
+}
+

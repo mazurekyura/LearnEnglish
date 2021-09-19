@@ -1,23 +1,26 @@
 ﻿@model List<LearnEnglish.Models.Book.BookViewModel>
 
 @section Head {
+    <script src="~/js/book.js"></script>
     <link rel="stylesheet" href="~/css/book.css" />
 }
 
 <div class="books">
     @foreach (var book in Model)
     {
-        <div class="cat-girl">
-            <div class="name">
-                @book.Name
-            </div>
-            <div>
-                <img class="image" src="@book.Url" />
-            </div>
-            <div class="buttons">
-                <a class="button">+</a>
-                <a href="/Book/Remove?id=@book.Id" class="button">-</a>
-            </div>
+    <div class="cat-girl">
+        <div class="name">
+            @book.Name
         </div>
+
+        <div class="image-wrapper">
+            <img class="image minimized" src="@book.Url" />
+        </div>
+
+        <div class="buttons">
+            <a class="button">+</a>
+            <a href="/Book/Remove?id=@book.Id" class="button">-</a>
+        </div>
+    </div>
     }
 </div>

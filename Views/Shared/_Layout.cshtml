@@ -1,4 +1,5 @@
-﻿@using LearnEnglish.Services
+﻿@using LearnEnglish.Localize
+@using LearnEnglish.Services
 @inject UserService userService
 
 <!DOCTYPE html>
@@ -18,50 +19,46 @@
 <body>
     <header>
         <ul class="menu-main">
-            <li><img src="~/image/logo.png" /><a href="">Learn English</a></li>
-            <li><a href="">Video</a></li>
-            <li><a href="">Audio</a></li>
+            <li><a href="Home/Index">Learn English</a></li>
+            <li><a href="General/Video">Video</a></li>
+            <li><a href="General/Audio">Audio</a></li>
             <li><a href="">Text</a></li>
         </ul>
     </header>
     <div class="center-block">
-        <div class="menu">
-            <ul>
-                @if (!User.Identity.IsAuthenticated)
+        <div class="right-menu">
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a href="/User/Registration">@General.Registration</a>
+                <a href="/User/Login">@General.Login</a>
+            }
+            else
+            {
+                <a href="">@General.Lessons</a>
+                <a href="/Book/Books">@General.Books</a>
+                <a href="/Test/Select">@General.Tests</a>
+                <a href="/Lesson/Select">@General.Lesson_for_select</a>
+                <a href="/User/SelectedLessons">@General.My_lessons</a>
+
+                <a href="/UserProfile/MyProfile">@General.Profile</a>
+                <a href="/BankCard/BankCardAdd">@General.Add_bank_card</a>
+                <a href="/BankCard/BankCardGet">@General.My_bank_cards</a>
+                <a href="/User/Logout">@General.Exit</a>
+
+                @if (userService.IsAdmin())
                 {
-                    <li><a href="/User/Registration">Registration</a></li>
-                    <li><a href="/User/Login">Login</a></li>
+                    <a href="/BankCard/BankCardAll">@General.Bank_cards_all</a><br>
+
                 }
-                else
+
+                @if (userService.IsModerator())
                 {
-                    <li><a href="">Lessons</a></li>
-                    <li><a href="/Book/Books">All books</a></li>
-                    <li><a href="/Test/Select">All tests</a></li>
-                    <li><a href="/Lesson/Select">LessonSelect</a></li>
-                    <li><a href="/User/SelectedLessons">MySelectedLessons</a></li>
-
-                    <li><a href="/UserProfile/MyProfile">MyProfile</a></li>
-                    <li><a href="/BankCard/BankCardAdd">AddBankCard</a></li>
-                    <li><a href="/BankCard/BankCardGet">MyBankCards</a></li>
-                    <li><a href="/User/Logout">Exit</a></li>
-
-                    @if (userService.IsAdmin())
-                    {
-                        <li><a href="/Lesson/Add">LessonAdd</a></li>
-                        <li><a href="/Test/Add">AddTest</a></li>
-                        <li><a href="/Book/Add">Add book</a></li>
-                        <li><a href="/BankCard/BankCardAll">@LearnEnglish.Localize.BankCard.See_All</a><br></li>
-
-                    }
-
-                    @if (userService.IsModerator())
-                    {
-                        <li><a href="/Lesson/Add">LessonAdd</a></li>
-                        <li><a href="/Test/Add">AddTest</a></li>
-                        <li><a href="/Book/Add">Add book</a></li>
-                    }
+                    <a href="/Lesson/Add">@General.Lessons_add</a>
+                    <a href="/Lesson/Add">@General.Lessons_add</a>
+                    <a href="/Test/Add">@General.Test_add</a>
+                    <a href="/Book/Add">@General.Book_add</a>
                 }
-            </ul>
+            }
 
         </div>
         <div class="content">
@@ -71,7 +68,7 @@
 
     <div class="footer">
         <span class="rights">
-            © All rights reserved - 2021 - LearnEnglish - TMS2021
+            © All rights reserved - LearnEnglish - TMS2021
         </span>
 
         <span>

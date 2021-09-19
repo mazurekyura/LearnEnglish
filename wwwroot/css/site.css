@@ -1,4 +1,20 @@
-﻿.menu-main li {
+﻿body {
+    background-color: #D4E6B3;
+}
+
+.logo {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.menu-main {
+    list-style: none;
+    text-align: center;
+    background: #dfd4d4;
+    margin: 0;
+}
+
+.menu-main li {
     display: inline-block;
 }
 
@@ -9,26 +25,18 @@
         vertical-align: middle;
     }
 
-    .menu-main li:last-child:after {
-        content: none;
-    }
-
 .menu-main a {
     text-decoration: none;
-    font-family: 'Ubuntu Condensed', sans-serif;
     letter-spacing: 2px;
     position: relative;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     margin: 0 34px 0 30px;
-    font-size: 17px;
+    font-size: 20px;
     text-transform: uppercase;
     display: inline-block;
     transition: color .2s;
 }
-
-    .menu-main a, .menu-main a:visited {
-        color: #9d999d;
-    }
 
         .menu-main a.current, .menu-main a:hover {
             color: #feb386;
@@ -55,18 +63,29 @@
             right: 0;
         }
 
-.header {
-    background: #33ff00;
-    font-size: 30px;
-    text-align: left;
-    height: 60px;
+.right-menu {
+    height: 80%;
+    width: 160px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #a9ba95;
+    overflow-x: hidden;
 }
 
-    .header img {
-        max-width: 35px;
-        max-height: 35px;
-        align-content: center;
+    /* The navigation menu links */
+    .right-menu a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #818181;
+        display: block;
     }
+
+        /* When you mouse over the navigation links, change their color */
+        .right-menu a:hover {
+            color: #f1f1f1;
+        }
 
 .center-block {
     display: flex;
@@ -78,12 +97,7 @@
 
 .content {
     flex: 1;
-    border: 1px red solid;
-}
-
-img {
-    max-width: 50px;
-    max-height: 50px;
+    border: 1px green solid;
 }
 
 .input-validation-error {
@@ -102,65 +116,8 @@ img {
     flex: 1;
 }
 
-.news {
-    padding-left: 20px;
-    border-left: 1px red solid;
-}
-
-.allgames {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.oneGame {
-    text-align: center;
-    border: 2px blue solid;
-    margin: 4px;
-    flex-direction: column;
-}
-
-.namegame {
-    font-size: 20px;
-}
-
-.logogame {
-    width: 60px;
-    height: 60px;
-    text-align: center;
-}
-
-.oneGame img {
-    max-width: 50px;
-    max-height: 50px;
-}
-
-.news {
-    padding-left: 20px;
-    border-left: 1px red solid;
-}
-
-.icon {
-    max-width: 20px;
-    max-height: 20px;
-}
-
-.linkgame {
-    font-size: 12px;
-}
-
-.icon-add-cat {
-    height: 15px;
-    width: 15px;
-}
-
 .hidden {
     display: none;
-}
-
-.menu-main {
-    list-style: none;   
-    text-align: center;
-    background: #dfd4d4;
 }
 
 .footer {
@@ -199,5 +156,12 @@ img {
 
 .footer-icon {
     padding: 3px;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.gallery-video {
+    display: flex;
+    flex-wrap: wrap;
 }
 
