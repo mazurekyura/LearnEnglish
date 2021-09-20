@@ -4,14 +4,16 @@ using LearnEnglish.EfStuff;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LearnEnglish.Migrations
 {
     [DbContext(typeof(LearnEnglishDbContext))]
-    partial class LearnEnglishDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210920121933_changed_test_2")]
+    partial class changed_test_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

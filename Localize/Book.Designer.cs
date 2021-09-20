@@ -61,6 +61,15 @@ namespace LearnEnglish.Localize {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to basket.
+        /// </summary>
+        public static string Add_to_Basket {
+            get {
+                return ResourceManager.GetString("Add_to_Basket", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Book image.
         /// </summary>
         public static string Book_Image {
@@ -75,6 +84,24 @@ namespace LearnEnglish.Localize {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View description.
+        /// </summary>
+        public static string View_description {
+            get {
+                return ResourceManager.GetString("View_description", resourceCulture);
             }
         }
     }

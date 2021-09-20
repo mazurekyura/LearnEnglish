@@ -120,6 +120,9 @@
   <data name="Add_bank_card" xml:space="preserve">
     <value>Add bank card</value>
   </data>
+  <data name="Bad_access" xml:space="preserve">
+    <value>you don't have sufficient rights to view the requested page</value>
+  </data>
   <data name="Bank_cards_all" xml:space="preserve">
     <value>Bank cards all</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="Book_add" xml:space="preserve">
     <value>Book add</value>
+  </data>
+  <data name="Dear" xml:space="preserve">
+    <value>Dear</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
@@ -161,6 +167,9 @@
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Registration</value>
+  </data>
+  <data name="Request_time" xml:space="preserve">
+    <value>Request time</value>
   </data>
   <data name="Start" xml:space="preserve">
     <value>Start</value>

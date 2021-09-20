@@ -70,6 +70,15 @@ namespace LearnEnglish.Localize {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to you don&apos;t have sufficient rights to view the requested page.
+        /// </summary>
+        public static string Bad_access {
+            get {
+                return ResourceManager.GetString("Bad_access", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bank cards all.
         /// </summary>
         public static string Bank_cards_all {
@@ -93,6 +102,15 @@ namespace LearnEnglish.Localize {
         public static string Books {
             get {
                 return ResourceManager.GetString("Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear.
+        /// </summary>
+        public static string Dear {
+            get {
+                return ResourceManager.GetString("Dear", resourceCulture);
             }
         }
         
@@ -192,6 +210,15 @@ namespace LearnEnglish.Localize {
         public static string Registration {
             get {
                 return ResourceManager.GetString("Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request time.
+        /// </summary>
+        public static string Request_time {
+            get {
+                return ResourceManager.GetString("Request_time", resourceCulture);
             }
         }
         

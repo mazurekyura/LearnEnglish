@@ -98,6 +98,7 @@ namespace LearnEnglish
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -144,9 +145,6 @@ namespace LearnEnglish
             provider.CreateMap<BankCardAddViewModel, BankCard>();
 
             provider.CreateMap<BankCard, BankCardGetViewModel>();
-                //.ForMember(
-                //nameof(BankCardGetViewModel.OwnerId),
-                //config => config.MapFrom(bankCard => bankCard.OwnerId));
 
             provider.CreateMap<LessonViewModel, Lesson>();
 

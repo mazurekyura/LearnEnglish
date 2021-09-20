@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LearnEnglish.Controllers.AuthAttribute;
 using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories.IRepository;
 using LearnEnglish.Models.Book;
@@ -37,12 +38,14 @@ namespace LearnEnglish.Controllers
             return View(viewModels);
         }
 
+        [IsModerator]
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
 
+        [IsModerator]
         [HttpPost]
         public IActionResult Add(BookViewModel bookViewModel)
         {

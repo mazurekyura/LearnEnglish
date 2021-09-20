@@ -81,45 +81,29 @@ namespace LearnEnglish.Controllers
         }
 
         [HttpPost]
-        public string Answers(List<TestSelectedViewModel> viewModels)
-        {            
-            var numberCorrectAnswers = viewModels.Count(x => x.IsSelectAnswerTrue && !x.IsSelectAnswerFalse);
-            var uncorrectAnswers = viewModels.Where(x => !x.IsSelectAnswerTrue).Select(x => x.Id).ToList();
- 
-            return $"правильных ответов {numberCorrectAnswers}";
+        public IActionResult Answers(List<TestSelectedViewModel> viewModels)
+        {
+            var user = _userService.GetCurrent();                        
+            user.NumberCorrectAnswers = viewModels
+                .Count(x => x.IsSelectAnswerTrue && !x.IsSelectAnswerFalse);
+
+            _userRepository.Save(user);
+
+            return RedirectToAction("NumberCorrectAnswers");
         }
 
+        [HttpGet]
+        public IActionResult NumberCorrectAnswers()
+        {
+            var user = _userService.GetCurrent();
 
-            //[HttpPost]
-            //public IActionResult Answers(List<TestSelectedViewModel> viewmodels)
-            //{
-            //    var user = _userService.GetCurrent();
+            var viewModel = new NumberCorrectAnswersViewModel
+            {
+                UserName = user.Login,
+                NumberCorrectAnswers = user.NumberCorrectAnswers
+            };
 
-            //    var selectedId = viewmodels
-            //        .Where(x => x.)
-            //        .Select(x => x.Id)
-            //        .ToList();
-
-            //    user.Lessons.RemoveRange(0, user.Lessons.Count);
-            //    user.Lessons = _lessonRepository.FindCoursesById(selectedId);
-            //    _userRepository.Save(user);
-
-            //    return RedirectToAction("SelectedLessons");
-            //}
-
-            //[HttpGet]
-            //public IActionResult Select()
-            //{
-            //    var userLessonsId = _userService.GetCurrent().Lessons.Select(x => x.Id).ToList();
-
-            //    var viewModel = _lessonRepository.GetAll().Select(x => new LessonSelectedViewModel
-            //    {
-            //        LessonName = x.Name,
-            //        Id = x.Id,
-            //        IsSelected = userLessonsId.Contains(x.Id)
-            //    }).ToList();
-
-            //    return View(viewModel);
-            //}
-        }
+            return View(viewModel);
+        }        
+    }
 }

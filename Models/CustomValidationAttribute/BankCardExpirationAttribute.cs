@@ -12,7 +12,7 @@ namespace LearnEnglish.Models.CustomValidationAttribute
         public override string FormatErrorMessage(string name)
         {
             return string.IsNullOrEmpty(ErrorMessage)
-                ? $"Срок действия карты указан некорректно"
+                ? $"Срок действия карты {name} указан некорректно"
                 : ErrorMessage;
         }
 

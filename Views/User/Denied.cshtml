@@ -1,6 +1,8 @@
-﻿@model LearnEnglish.Models.User.DeniedViewModel
-<h2>Доступа нет</h2>
+﻿@using LearnEnglish.Localize
+
+@model LearnEnglish.Models.User.DeniedViewModel
+<h2>No access</h2>
 <div>
-    Уважаемый @Model.UserName у вас не достаточно прав для просмотра запрашиваемой страницы.
-    Время запроса: @Model.RequestTime.ToShortTimeString()
+    @General.Dear @Model.UserName @General.Bad_access.
+    @General.Request_time: @Model.RequestTime.ToShortTimeString()
 </div>

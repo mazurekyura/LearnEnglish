@@ -27,38 +27,47 @@
     </header>
     <div class="center-block">
         <div class="right-menu">
+
             @if (!User.Identity.IsAuthenticated)
             {
                 <a href="/User/Registration">@General.Registration</a>
                 <a href="/User/Login">@General.Login</a>
-                <a href="/Book/Books">@General.Books</a>
-                <a href="/Test/Select">@General.Tests</a>
-                <a href="">@General.Lessons</a>
+
             }
-            else
+
+            <a href="/Book/Books">@General.Books</a>
+            <a href="/Test/Select">@General.Tests</a>
+            <a href="">@General.Lessons</a>
+
+            @if (userService.IsAdmin())
             {
-                <a href="/Lesson/Select">@General.Lesson_for_select</a>
-                <a href="/User/SelectedLessons">@General.My_lessons</a>
+                <a href="/BankCard/BankCardAll">@General.Bank_cards_all</a>
+            }
 
+            @if (userService.IsModerator())
+            {
+                <a href="/Lesson/Add">@General.Lessons_add</a>
                 <a href="/Test/Add">@General.Test_add</a>
+            }
 
-                <a href="/UserProfile/MyProfile">@General.Profile</a>
-                <a href="/BankCard/BankCardAdd">@General.Add_bank_card</a>
-                <a href="/BankCard/BankCardGet">@General.My_bank_cards</a>
-                <a href="/User/Logout">@General.Exit</a>
-
-                @if (userService.IsAdmin())
+            @if (User.Identity.IsAuthenticated)
+            {
+                @if (userService.IsModerator() || userService.IsAdmin())
                 {
-                    <a href="/BankCard/BankCardAll">@General.Bank_cards_all</a><br>
+                    <a href="/User/Logout">@General.Exit</a>
                 }
-
-                @if (userService.IsModerator())
+                else
                 {
-                    <a href="/Lesson/Add">@General.Lessons_add</a>
-                    <a href="/Lesson/Add">@General.Lessons_add</a>
+                    <a href="/UserProfile/MyProfile">@General.Profile</a>
+                    <a href="/Lesson/Select">@General.Lesson_for_select</a>
+                    <a href="/User/SelectedLessons">@General.My_lessons</a>
+                    <a href="/BankCard/BankCardAdd">@General.Add_bank_card</a>
+                    <a href="/BankCard/BankCardGet">@General.My_bank_cards</a>
                     <a href="/Book/Add">@General.Book_add</a>
+                    <a href="/User/Logout">@General.Exit</a>
                 }
             }
+
         </div>
         <div class="content">
             @RenderBody()

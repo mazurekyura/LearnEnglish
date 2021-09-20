@@ -15,6 +15,8 @@ namespace LearnEnglish.EfStuff.Model
 
         public Language Language { get; set; }
 
+        public int NumberCorrectAnswers { get; set; }
+
         public virtual UserProfile UserProfile { get; set; }
 
         public virtual List<BankCard> BankCards { get; set; }

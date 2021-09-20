@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add_to_Basket" xml:space="preserve">
+    <value>Добавить в корзину</value>
+  </data>
   <data name="Book_Image" xml:space="preserve">
     <value>Картинка</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Название</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="View_description" xml:space="preserve">
+    <value>Смотреть описание</value>
   </data>
 </root>
