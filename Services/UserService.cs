@@ -58,6 +58,5 @@ namespace LearnEnglish.Services
 
             return new ClaimsPrincipal(claimsIdentity);
         }
-
     }
 }

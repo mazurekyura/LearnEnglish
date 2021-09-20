@@ -1,29 +1,36 @@
 ﻿@model List<LearnEnglish.Models.Test.TestSelectedViewModel>
 
+@section Head{
+    <link rel="stylesheet" href="~/css/test.css">
+}
+
 <form action="/Test/Answers" method="post">
 
     @for (int i = 0; i < Model.Count(); i++)
     {
-        <div class="name">
-            @Html.HiddenFor(m => Model[i].Id)
-            @Html.DisplayFor(x => Model[i].Question)
-        </div>
-        <span>
-            @Html.DisplayFor(x => Model[i].AnswerTrue)
-            @Html.CheckBoxFor(x => Model[i].IsSelectAnswerTrue)
-        </span>
-        <span>
-            @Html.DisplayFor(x => Model[i].AnswerFalse)
-            @Html.CheckBoxFor(x => Model[i].IsSelectAnswerFalse)
-        </span>
-        <span>
-            @Html.DisplayFor(x => Model[i].AnswerFasleSecond)
-            @Html.CheckBoxFor(x => Model[i].IsSelectAnswerFalseSecond)
-        </span>
-        <span>
-            @Html.DisplayFor(x => Model[i].AnswerFasleThird)
-            @Html.CheckBoxFor(x => Model[i].IsSelectAnswerFalseThird)
-        </span>
+        <p>
+            <div class="question">
+                @Html.HiddenFor(m => Model[i].Id)
+                @(i+1) @Html.DisplayFor(x => Model[i].Question)
+            </div>
+            <span class="answer">
+                @Html.DisplayFor(x => Model[i].AnswerTrue)
+                @Html.CheckBoxFor(x => Model[i].IsSelectAnswerTrue)
+            </span>
+            <span class="answer">
+                @Html.DisplayFor(x => Model[i].AnswerFalse)
+                @Html.CheckBoxFor(x => Model[i].IsSelectAnswerFalse)
+            </span>
+            <span class="answer">
+                @Html.DisplayFor(x => Model[i].AnswerFasleSecond)
+                @Html.CheckBoxFor(x => Model[i].IsSelectAnswerFalseSecond)
+            </span>
+            <span class="answer">
+                @Html.DisplayFor(x => Model[i].AnswerFasleThird)
+                @Html.CheckBoxFor(x => Model[i].IsSelectAnswerFalseThird)
+            </span>
+        </p>
+
     }
     <div>
         <input type="submit" name="Select" value="Проверить" />

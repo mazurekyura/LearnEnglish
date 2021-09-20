@@ -8,18 +8,18 @@
 <div class="books">
     @foreach (var book in Model)
     {
-    <div class="cat-girl">
-        <div class="name">
+    <div class="book-cover">
+        <div class="book-name">
             @book.Name
         </div>
 
         <div class="image-wrapper">
-            <img class="image minimized" src="@book.Url" />
+            <img src="@book.Url" class="image-wrapper-size"/>
         </div>
 
         <div class="buttons">
-            <a class="button">+</a>
-            <a href="/Book/Remove?id=@book.Id" class="button">-</a>
+            <a class="button">Добавить в корзину</a>
+            <a class="button">Смотреть описание</a>
         </div>
     </div>
     }

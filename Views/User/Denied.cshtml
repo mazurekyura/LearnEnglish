@@ -1,7 +1,6 @@
 ﻿@model LearnEnglish.Models.User.DeniedViewModel
-<h1>Доступа нет</h1>
+<h2>Доступа нет</h2>
 <div>
-    Уважаемый @Model.UserName у вас не достаточно прав для просмотра
-    <a href="@Model.DeniedUrl"> этой </a> страницы.
+    Уважаемый @Model.UserName у вас не достаточно прав для просмотра запрашиваемой страницы.
     Время запроса: @Model.RequestTime.ToShortTimeString()
 </div>

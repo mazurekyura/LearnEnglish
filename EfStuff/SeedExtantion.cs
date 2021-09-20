@@ -39,13 +39,18 @@ namespace LearnEnglish.EfStuff
             var bookDefaults = new List<Book>() {
                 new Book()
                 {
-                    Name= "Book1",
-                    Url = "https://i.pinimg.com/736x/75/1d/4b/751d4bda81598c27a15ac46874b3a305.jpg"
+                    Name= "Cutting edge",
+                    Url = "https://cdn.elenaruvel.com/wp-content/uploads/new-cutting-edge-cover.jpg"
                 },
                 new Book()
                 {
-                    Name= "Book2",
-                    Url = "https://i.pinimg.com/originals/2c/86/5d/2c865d628ff955fbc87e1ab106236dab.jpg"
+                    Name= "Face-2-face",
+                    Url = "https://cdn2.elenaruvel.com/wp-content/uploads/face-2-face-cover.jpg"
+                },
+                new Book()
+                {
+                    Name= "HeadWay",
+                    Url = "https://cdn.elenaruvel.com/wp-content/uploads/new-headway-cover.jpg"
                 }
             };
 

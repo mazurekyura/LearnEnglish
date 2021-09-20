@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LearnEnglish.Controllers.AuthAttribute;
 using LearnEnglish.EfStuff.Model;
 using LearnEnglish.EfStuff.Repositories;
 using LearnEnglish.EfStuff.Repositories.IRepository;
@@ -43,12 +44,14 @@ namespace LearnEnglish.Controllers
             _userService = userService;
         }
 
+        [IsModerator]
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
 
+        [IsModerator]
         [HttpPost]
         public IActionResult Add(TestAddViewModel viewModel)
         {
@@ -58,6 +61,7 @@ namespace LearnEnglish.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Select()
         {
@@ -80,11 +84,8 @@ namespace LearnEnglish.Controllers
         public string Answers(List<TestSelectedViewModel> viewModels)
         {            
             var numberCorrectAnswers = viewModels.Count(x => x.IsSelectAnswerTrue && !x.IsSelectAnswerFalse);
-
             var uncorrectAnswers = viewModels.Where(x => !x.IsSelectAnswerTrue).Select(x => x.Id).ToList();
-
-
-
+ 
             return $"правильных ответов {numberCorrectAnswers}";
         }
 
