@@ -1,0 +1,24 @@
+﻿@using LearnEnglish.Localize
+
+@model List<LearnEnglish.Models.User.UserViewModel>
+
+<div>
+    <table border="1" align="center" cellspacing="0" cellpadding="10">
+        <caption align="center">@General.All_users</caption>
+        <tr>            
+            <th>Логин</th>
+            <th>Родной язык</th>            
+            <th>Имя</th>
+            <th>Фамилия</th>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <th>@user.Login</th>
+                <th>@user.Language</th>
+                <th>@user.FirstName</th>
+                <th>@user.LastName</th>                
+            </tr>
+        }        
+    </table>    
+</div>

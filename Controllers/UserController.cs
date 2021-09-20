@@ -158,5 +158,14 @@ namespace LearnEnglish.Controllers
             };
             return View(viewModel);
         }
+
+        public IActionResult All()
+        {
+            var allUsers = _userRepository.GetAll();
+
+            var viewModels = _mapper.Map<List<UserViewModel>>(allUsers);
+
+            return View(viewModels);
+        }
     }
 }

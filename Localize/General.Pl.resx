@@ -120,6 +120,9 @@
   <data name="Add_bank_card" xml:space="preserve">
     <value>Dodaj kartę bankową</value>
   </data>
+  <data name="All_users" xml:space="preserve">
+    <value>Wszyscy użytkownicy</value>
+  </data>
   <data name="Bad_access" xml:space="preserve">
     <value>nie masz wystarczających uprawnień, aby wyświetlić żądaną stronę</value>
   </data>

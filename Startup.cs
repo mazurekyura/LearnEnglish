@@ -160,6 +160,15 @@ namespace LearnEnglish
             
             provider.CreateMap<Book, BookViewModel>();
 
+            provider.CreateMap<User, UserViewModel>()
+                .ForMember(
+                    nameof(UserViewModel.FirstName),
+                    config => config.MapFrom(user => user.UserProfile.FirstName))
+                .ForMember(
+                    nameof(UserViewModel.LastName),
+                    config => config.MapFrom(user => user.UserProfile.LastName));
+
+
             var mapperConfiguration = new MapperConfiguration(provider);
             var mapper = new Mapper(mapperConfiguration);
 

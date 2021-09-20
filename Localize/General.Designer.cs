@@ -70,6 +70,15 @@ namespace LearnEnglish.Localize {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All users.
+        /// </summary>
+        public static string All_users {
+            get {
+                return ResourceManager.GetString("All_users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to you don&apos;t have sufficient rights to view the requested page.
         /// </summary>
         public static string Bad_access {
