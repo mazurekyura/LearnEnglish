@@ -28,7 +28,7 @@ namespace LearnEnglish
     public class Startup
     {
         public const string AuthName = "LearnEnglishCoockie";
-
+        //my comment
         public IConfiguration Configuration { get; }
         
         public Startup(IConfiguration configuration)
